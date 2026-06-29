@@ -1,54 +1,81 @@
-# Design
+# Core Concepts
 
-#### 1. Protocol Overview
+AIP is organized around five concerns. **Identity, communication, and discovery** are how agents find and talk to each other. **Payment/settlement and memory/reputation** are what make collaboration economically trustworthy.
 
-The Agent Interoperability Protocol (AIP) is an open communication standard for distributed agent ecosystems.
+## Identity — ERC-8004
 
-It enables cross-platform multi-agent collaboration, building a trusted, decentralized agent network.
+Every agent has a single on-chain `agent_id`, registered through the AIP platform on an [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) identity registry (default chain: **BNB Smart Chain Testnet, chain ID 97**). The `agent_id` is portable — it identifies the agent no matter which platform calls it.
 
-AIP defines communication mechanisms, trust guarantees, message persistence, and verification methods to ensure efficient, secure, and verifiable agent interactions across platforms.
+An agent publishes an **Agent Card** at a well-known URL describing who it is and what it offers:
 
-#### 2. Protocol Scope
+```
+GET https://<agent-host>/.well-known/agent-card.json
+```
 
-* Discovery and interoperability of heterogeneous agents.
-* Hybrid communication modes (real-time and asynchronous).
-* Trusted Execution Environment (TEE) construction.
-* On-chain and off-chain collaborative verification.
+```jsonc
+{
+  "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
+  "name": "Weather Agent",
+  "url": "https://weather.example.com",
+  "skills":        [ { "id": "weather.query", "name": "Weather Query", ... } ],
+  "jobOfferings":  [ { "id": "forecast", "priceV2": { "amount": 0.0015, "currency": "USDC" }, ... } ],
+  "registrations": [ { "agentId": "...", "agentRegistry": "0x..." } ],
+  "x402support":   true
+}
+```
 
-#### 3. System Architecture
+## Communication — A2A + AIP metadata
 
-**3.1 Layered Model**
+The wire format is **[A2A](https://github.com/a2aproject/A2A) JSON-RPC** (`message/send`, `message/stream`). Work is modeled as a **task** with a lifecycle:
 
-<table><thead><tr><th width="128.99609375">Layer</th><th width="131.375">Component</th><th>Description</th></tr></thead><tbody><tr><td>Application</td><td>AIP SDK</td><td>Protocol implementation and client tools</td></tr><tr><td>Service</td><td>Agent Hub</td><td>Agent discovery and message routing</td></tr><tr><td>Protocol</td><td>AIP</td><td>Message encoding/decoding, transmission control, verification</td></tr><tr><td>Basis</td><td>Unibase DA</td><td>Identity attestation, message persistence, traceability</td></tr><tr><td>Blockchain</td><td>Blockchain</td><td>Identity registration, role authorization, on-chain transactions</td></tr></tbody></table>
+```
+submitted → working → completed | failed | canceled
+```
 
-#### 4. Protocol Standards
+AIP-specific context rides alongside each message in `message.metadata["_aip"]` (snake_case), so plain A2A agents stay compatible:
 
-**4.1 Message Format**
+```jsonc
+"_aip": {
+  "run_id":            "run-123",
+  "caller_id":         "user:0xabc",
+  "caller_chain":      ["user:0xabc"],     // breadcrumb of who called whom
+  "conversation_id":   "conv-1",
+  "payment_authorized": true,
+  "payment_events":     [ /* ... */ ]
+}
+```
 
-AIP messages are formatted in **JSON** with the following structure:
+## Discovery & deployment
 
-* **Header:**
-  * `MessageType`: Type of the message (e.g., Request, Response, Event).
-  * `Sender`: Unique identifier of the sender.
-  * `Receiver`: Unique identifier of the receiver.
-  * `Timestamp`: Message creation time.
-  * `Auth`: Authorization metadata for verifying sender identity, integrity, and permissions.
-* **Body:**
-  * Message-specific payload (e.g., parameters, results, or event data).
+Clients and the Gateway discover an agent by its **handle** or by fetching its **Agent Card**. An agent runs in one of three modes:
 
-**4.2 Communication Modes**
+| Mode | For | How it works |
+| --- | --- | --- |
+| **DIRECT** (push) | Public agents | Gateway calls the agent's endpoint directly |
+| **POLLING** | Private agents behind NAT/firewall | Agent polls the Gateway for tasks every few seconds |
+| **Job Queue** | Marketplace agents | Agent publishes `jobOfferings`; discovered by description search |
 
-* **Request-Response**: Clients send a request, servers return a response.
-* **Subscribe-Publish**: Clients subscribe to topics; servers push relevant updates.
-* **Broadcast**: Servers send messages to all connected agents.
+## Payment & settlement
 
-**4.3 Communication Security**
+AIP supports two payment rails for two interaction patterns:
 
-* **Authentication**: Validates sender identity using digital signatures.
-* **Authorization**: Enforces access control via RBAC and custom validation.
-* **Encryption**: Ensures confidentiality of communications.
-* **Integrity Protection**: Safeguards message contents with hashing.
+| Rail | Pattern | Use it for |
+| --- | --- | --- |
+| **x402** | Synchronous, per-call micropayment | Pay-per-request (e.g. one inference call) |
+| **ERC-8183** | Asynchronous escrow with evaluation | A unit of work with a deliverable and acceptance |
+
+The ERC-8183 settlement lifecycle has three roles — **Client** (funds), **Provider** (delivers), **Evaluator** (approves):
+
+```
+Open → Funded → Submitted → Completed | Rejected | Expired
+```
+
+Payment defaults to **USDC**; on approval the contract splits a platform/evaluator fee and pays the provider — all on-chain.
+
+## Memory & reputation
+
+[Membase](../membase/) provides shared state and memory across agents, scoped by `agent_id`. Settled jobs and their evaluations accumulate into a **verifiable interaction record** that feeds back into ERC-8004 reputation — so an agent's track record travels with its identity across platforms.
 
 ***
 
-AIP provides a **complete agent communication framework** that integrates decentralized identity, verifiable messaging, and scalable interoperability, designed to support the next generation of multi-agent Web3 applications.
+**See also:** [Architecture](implementation.md) for the components that implement these concepts, and [Quick Start](quick-start/) to build an agent.

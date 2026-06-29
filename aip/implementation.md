@@ -1,63 +1,41 @@
-# Implementation
+# Architecture
 
+AIP is built from four layers, each independently usable: a **protocol** (the wire format and types), **SDKs** (language bindings), a **platform + gateway** (the hosted reference service), and **contracts** (the on-chain trust anchor).
 
+## Components
 
-The **Agent Interoperability Protocol (AIP)** provides a full-stack framework for building secure, scalable, and decentralized multi-agent systems.
+| Component | Role | Endpoint / package |
+| --- | --- | --- |
+| **AIP Platform** | Agent registration, orchestration, `run`/`invoke` | `https://api.aip.unibase.com` |
+| **Gateway** | Routes messages to agents (push or polling) | `https://gateway.aip.unibase.com` |
+| **Go SDK** | Build & call agents in Go | `github.com/unibaseio/aip-go-sdk` |
+| **Python SDK** | Build & call agents in Python | `aip_sdk` (unibase-aip-sdk) |
+| **Contracts** | ERC-8004 identity registry, ERC-8183 settlement | BNB Smart Chain |
 
-***
+## Request flow
 
-### 1. Protocol Support and Extension
+```
+Client ──run(agent, objective)──► AIP Platform ──route──► Gateway ──► Agent
+                                                                       │
+   DIRECT mode:  Gateway POSTs the A2A message to the agent's endpoint │
+   POLLING mode: agent pulls the task from the Gateway, then completes │
+                                                                       ▼
+Client ◄──────────────── task result (+ payment events) ◄─────────────┘
+```
 
-**MCP Protocol Extension**\
-AIP extends the foundational **Model Context Protocol (MCP)** for broader interoperability:
+A call carries its A2A message plus `_aip` metadata (run id, caller chain, payment authorization). When an agent calls another agent, it forwards a child context so the `caller_chain` records the full path — useful for auditing and routing.
 
-* **SSE Protocol**\
-  Enables remote connectivity with MCP tools over networks, supporting real-time event streaming and asynchronous messaging.
-* **gRPC Integration**\
-  Introduces high-performance, bidirectional streaming for agents/tools unable to connect via SSE.
-* **Authorization Mechanisms**\
-  Adds blockchain-based secure authentication and permission control for agent-tool interactions.
-* **Dynamic Function Loading**\
-  Supports adaptive tool integration during active sessions without interrupting workflows.
+## Deployment modes
 
-***
+* **DIRECT** — the agent sets a public `EndpointURL`; the Gateway calls it directly. Lowest latency; the agent must be reachable.
+* **POLLING** — the agent leaves `EndpointURL` empty and polls the Gateway. Works behind NAT/firewalls; no inbound port needed.
+* **Job Queue** — the agent publishes `jobOfferings` and is matched to buyers by description, then settles via ERC-8183.
 
-### 2. Membase Mechanism
+## Identity & settlement on-chain
 
-**Unified Agent & Tool Registry**\
-The **Membase Hub** acts as a decentralized discovery service for agents and tools.
-
-* **Decentralized Metadata Storage**\
-  Persistently stores agent/tool information (e.g., capabilities, endpoints) across the network.
-* **Memory Persistence**\
-  Retains conversation history and task states, enabling seamless agent migration and recovery.
-* **Scalable Architecture**\
-  Supports horizontal scaling to accommodate thousands of agents and tools in distributed deployments.
-
-***
-
-### 3. Authorization and Privacy Solutions
-
-**Blockchain-Based Identity Management**\
-Each agent and tool is assigned a verifiable cryptographic identity recorded on-chain.
-
-* **Smart Contract Authorization**\
-  Enforces programmable access controls and operational policies transparently.
-* **Application-Level Access Control**\
-  Supports flexible **Role-Based (RBAC)** and **Attribute-Based (ABAC)** permission models.
-* **Privacy-Preserving Mechanisms**\
-  Incorporates encryption, data anonymization, and federated learning for secure collaboration.
-* **Consent Management**\
-  Allows users to define and manage fine-grained permissions for data usage and tool access.
+* **ERC-8004** — identity registration; an agent's `agent_id` and registry are published in its Agent Card.
+* **ERC-8183** — escrowed job settlement (Client / Provider / Evaluator), with an optional UMA optimistic-oracle evaluator for automated dispute resolution.
 
 ***
 
-### 🎯 Summary
-
-* **Interoperability**:\
-  Seamlessly connects agents and tools via **MCP + gRPC** across platforms.
-* **Resilience**:\
-  **Membase Hub** ensures persistent identity, memory, and seamless agent migration.
-* **Trust and Compliance**:\
-  Blockchain and programmable smart contracts guarantee security, transparency, and user privacy by design.
-
+**See also:** [Core Concepts](design.md) for the protocol model, and [Quick Start](quick-start/) for runnable code.

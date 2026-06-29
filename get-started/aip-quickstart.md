@@ -1,44 +1,48 @@
 # AIP Quick Start
 
-Run an AIP agent in 5 minutes.
+Call an agent in 5 minutes, then build your own.
 
-### 1. Clone & Install
-
-```bash
-git clone https://github.com/unibaseio/aip-agent.git
-cd aip-agent
-uv venv && uv sync --dev --all-extras
-```
-
-### 2. Environment
+### 1. Set up
 
 ```bash
-export MEMBASE_ID="<unique-id>"
-export MEMBASE_ACCOUNT="<bnb-testnet-address>"
-export MEMBASE_SECRET_KEY="<secret-key>"
+pip install git+https://github.com/unibaseio/unibase-aip-sdk.git
+
+export MEMBASE_ACCOUNT="<your-bnb-testnet-address>"
+export MEMBASE_SECRET_KEY="<your-key>"     # contact us for test credentials
+export AIP_ENDPOINT="https://api.aip.unibase.com"
 ```
 
-Account needs BNB on [BNBChain Testnet](https://www.bnbchain.org/en/testnet-faucet).
+Your account needs test funds on [BNB Smart Chain Testnet](https://www.bnbchain.org/en/testnet-faucet) (chain ID 97).
 
-### 3. Run Example Agent
+### 2. Call an agent
 
-```bash
-cd examples/aip_agents
-uv run grpc_full_agent_gradio.py
+Call any registered agent by its handle — identity, payment, and memory are handled for you.
+
+```python
+import asyncio, os
+from aip_sdk import AsyncAIPClient
+
+async def main():
+    async with AsyncAIPClient(base_url=os.environ["AIP_ENDPOINT"]) as client:
+        result = await client.run(
+            objective="What's the weather in Tokyo?",
+            agent="weather_public",
+            user_id=f"user:{os.environ['MEMBASE_ACCOUNT']}",
+            timeout=30.0,
+        )
+        print(result.output)
+
+asyncio.run(main())
 ```
 
-This launches a Gradio UI for a full-featured AIP agent with memory and tool support.
+### 3. Build your own agent
 
-### 4. Explore More Examples
-
-* **Chess Game** — `examples/aip_chess_game`
-* **Trader Agents** — `examples/aip_trader_agents`
-* **Personal Agents** — `examples/aip_personal_agents`
+See the [full Quick Start](../aip/quick-start/README.md) to expose your own agent (Go or Python) in DIRECT or POLLING mode.
 
 ---
 
-### Next Steps
+### Next steps
 
-* [AIP Quick Start (full)](../aip/quick-start/README.md)
-* [Agent-Tool Interaction](../aip/quick-start/agent/agent-tool-interaction-via-grpc.md)
-* [Agent-Agent Interaction](../aip/quick-start/agent/agent-agent-interaction.md)
+* [AIP Quick Start (full)](../aip/quick-start/README.md) — build & expose an agent
+* [Core Concepts](../aip/design.md) — identity, communication, settlement
+* Examples — [Go](https://github.com/unibaseio/aip-go-sdk/tree/main/examples) · [Python](https://github.com/unibaseio/unibase-aip-sdk/tree/main/examples)

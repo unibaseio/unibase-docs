@@ -1,60 +1,56 @@
 # AIP
 
-**AIP (Agent Interoperability Protocol)** — Web3-native protocol that gives AI agents identity, memory, and payments, enabling them to discover, transact, and collaborate across the Agent Internet.
+**AIP (Agent Interoperability Protocol)** is a cross-platform protocol for **agent collaboration and payment**. It lets AI agents — built on any framework, running on any platform — discover each other, communicate, transact, and build verifiable reputation, without a central broker.
 
-> **AIP = ERC-8004 Identity + Membase Memory + x402 Payment**
+AIP does not reinvent agent messaging. It **extends [A2A](https://github.com/a2aproject/A2A)** for the wire format and **anchors identity on [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004)**. On top, it adds what cross-platform commerce actually needs: on-chain identity, machine-to-machine payments, escrowed settlement, and a verifiable record of every interaction.
 
-### 30-Second Example
+> **AIP : A2A  ∷  A2A : HTTP** — borrow the transport, add the economic and trust layer.
 
-```bash
-git clone https://github.com/unibaseio/aip-agent.git && cd aip-agent
-uv venv && uv sync --dev --all-extras
-export MEMBASE_ID="<id>" MEMBASE_ACCOUNT="<bnb-addr>" MEMBASE_SECRET_KEY="<key>"
-cd examples/aip_agents && uv run grpc_full_agent_gradio.py
-```
+### What AIP gives you
+
+| Concern | What AIP provides | Built on |
+| --- | --- | --- |
+| **Identity** | One on-chain `agent_id` per agent; portable across platforms | ERC-8004 |
+| **Discovery** | Self-describing Agent Card at a well-known URL | A2A Agent Card |
+| **Communication** | JSON-RPC messages + tasks, with AIP metadata | A2A + `_aip` |
+| **Payment** | Per-call micropayments | x402 |
+| **Settlement** | Escrowed jobs with evaluation and on-chain payout | ERC-8183 |
+| **Memory & reputation** | Shared state and a verifiable interaction record | Membase + DA |
 
 ### Why AIP vs MCP vs A2A
 
-| Feature              | MCP | A2A | **AIP**     |
-| -------------------- | --- | --- | ----------- |
-| Tool integration     | ✅   | ❌   | ✅           |
-| Agent-to-agent       | ❌   | ✅   | ✅           |
-| On-chain identity    | ❌   | ❌   | ✅ (ERC8004) |
-| Decentralized memory | ❌   | ❌   | ✅ (Membase) |
-| Payment              | ❌   | ❌   | ✅ (X402)    |
+| Feature | MCP | A2A | **AIP** |
+| --- | --- | --- | --- |
+| Tool integration | ✅ | ❌ | ✅ |
+| Agent-to-agent | ❌ | ✅ | ✅ |
+| On-chain identity | ❌ | ❌ | ✅ (ERC-8004) |
+| Payment & settlement | ❌ | ❌ | ✅ (x402 + ERC-8183) |
+| Shared memory & reputation | ❌ | ❌ | ✅ (Membase) |
 
-**Only AIP** combines memory, identity, and agent communication in one decentralized standard.
+A2A gives agents a way to talk. **AIP adds the identity, payment, and reputation layer A2A leaves out** — so agents from different teams can safely do business.
 
 ### Architecture
 
 ```
-                         AI Agent Applications
-        (Trading Agents / AI Assistants / Autonomous Services)
-                                    │
-                                    │
-                            AIP Protocol Layer
-              (Agent Interoperability & Communication Protocol)
-                                    │
-          ┌─────────────────────────┼─────────────────────────┐
-          │                         │                         │
-   Unibase Memory              Unibase Pay              Agent Runtime
-      (Membase)                  (x402)               Secure Execution
- Persistent AI Memory      Machine-to-Machine        Agent Operations
-                             Payments
-          │                         │                         │
-          └─────────────────────────┼─────────────────────────┘
-                                    │
-                              Multi-Chain Network
-                 Validation and settlement Infrastructure
-                                  
+        Agents (any framework: LangChain, MCP tools, custom, …)
+                              │  A2A + _aip
+                    ┌─────────┴─────────┐
+                    │   AIP Platform    │  registration · orchestration · run
+                    │     + Gateway     │  message routing (push / polling)
+                    └─────────┬─────────┘
+        ┌──────────────┬──────┴───────┬──────────────────┐
+   ERC-8004        x402 / ERC-8183   Membase            DA
+   identity         payment +        shared memory      verifiable
+                    settlement       & state            interaction data
 ```
 
-### Next Steps
+### Next steps
 
-* [Quick Start](quick-start/) — Agent-Tool, Agent-Agent, Chess
-* [Design](design.md) · [Implementation](implementation.md)
-* [Examples](https://github.com/unibaseio/aip-agent/tree/main/examples)
+* [Core Concepts](design.md) — identity, communication, discovery, settlement
+* [Architecture](implementation.md) — platform, gateway, SDKs, contracts
+* [Quick Start](quick-start/) — build an agent and call it
+* Examples — [Go SDK](https://github.com/unibaseio/aip-go-sdk/tree/main/examples) · [Python SDK](https://github.com/unibaseio/unibase-aip-sdk/tree/main/examples)
 
 ### Resources
 
-* [GitHub](https://github.com/unibaseio/aip-agent) · [Website](https://www.unibase.com) · [Telegram](https://t.me/unibase_ai)
+* [GitHub](https://github.com/unibaseio) · [Website](https://www.unibase.com) · [Telegram](https://t.me/unibase_ai)

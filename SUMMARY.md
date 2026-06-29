@@ -24,15 +24,9 @@
 
 * [AIP](aip/README.md)
   * [Quick Start](aip/quick-start/README.md)
-  * [Design](aip/design.md)
+  * [Core Concepts](aip/design.md)
+  * [Architecture](aip/implementation.md)
   * [Agent Interaction Process](aip/agent-interaction-process.md)
-  * [Implementation](aip/implementation.md)
-  * [Tool](aip/quick-start/tool.md)
-  * [Agent](aip/quick-start/agent/README.md)
-    * [Agent-Tool Interaction Via gRPC](aip/quick-start/agent/agent-tool-interaction-via-grpc.md)
-    * [Agent-Tool Interaction Via SSE](aip/quick-start/agent/agent-tool-interaction-via-sse.md)
-    * [Agent-Agent Interaction](aip/quick-start/agent/agent-agent-interaction.md)
-  * [Chess game](aip/quick-start/chess-game.md)
 
 * [Unibase Pay](unibase-pay/README.md)
   * [Quick Start](unibase-pay/quick-start.md)
