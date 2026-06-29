@@ -38,11 +38,13 @@ Unibase is building the foundation for the **Open Agent Internet** — a modular
 
 | Module | One-line |
 |--------|----------|
-| **Membase** | Memory layer — sync, knowledge bases, on-chain tasks. ZK-verified, MCP/skill. |
+| **Membase** | Agent memory & collaboration SDK — wallet-owned encrypted memory, on-device recall, agent-direct cooperation, on-chain settlement. SDK / MCP / skill. |
 | **AIP Protocol** | Agent interoperability — identity, permissioning, shared memory. ERC-8004 & x402. |
 | **Unibase Pay** | x402 on BNB Chain — agents search, pay, access. Privy wallet, micropayments. |
-| **Unibase DA** | Data availability — 32–81 GB/s, honest-one fraud proofs, EB+ capacity. |
+| **Unibase DA** | Data availability — erasure-coded, ZK-verified, honest-one fraud proofs, EB+ capacity. |
 | **Unibase Memory** | Chrome extension — capture, organize & reuse ChatGPT/Claude/Gemini chats. Encrypted, owned, verifiable. |
+
+> **Membase vs Unibase Memory:** **Membase** is the developer **SDK** for building agents with memory & collaboration. **Unibase Memory** is the consumer **Chrome extension** for capturing and reusing your own AI chats (built on the same stack).
 
 ### 6. Ecosystem
 

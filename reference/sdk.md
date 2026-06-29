@@ -18,6 +18,8 @@ pip install "unibase-membase-sdk[mcp,recovery,runtime] @ git+https://github.com/
 
 See [Membase → Integration Options](../membase/integration-options.md) for MCP and Skill setup.
 
+> **Versioning:** installs track the `main` branch (HEAD). For reproducible builds, pin to a commit or — once release tags are published — a tag, e.g. `… @ git+https://github.com/unibaseio/unibase-membase.git@<tag>`.
+
 > Legacy 1.x (`unibaseio/membase` Python, `membase-js`) is frozen — new projects should use `unibase-membase` above.
 
 ### AIP

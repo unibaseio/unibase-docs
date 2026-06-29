@@ -1,27 +1,30 @@
 # Supported Networks
 
+> **Naming:** "BNB Chain" and "BSC" refer to the same network; we use **BNB Chain** in prose and **BSC + chain ID** in technical contexts.
+
 ### Membase & AIP
 
-| Network | Status | Explorer |
-|---------|--------|----------|
-| BNB Chain Mainnet | ✅ Live | [bscscan.com](https://bscscan.com/) |
-| BNB Chain Testnet | ✅ Live | [testnet.bscscan.com](https://testnet.bscscan.com/) |
-| OPBNB Testnet | ✅ Live | [opbnb-testnet.bscscan.com](https://opbnb-testnet.bscscan.com/) |
-| OP Sepolia | ✅ Live | [sepolia-optimistic.etherscan.io](https://sepolia-optimistic.etherscan.io/) |
+| Network | Chain ID | Status | Explorer |
+|---------|----------|--------|----------|
+| BNB Chain (BSC) Mainnet | 56 | ✅ Live | [bscscan.com](https://bscscan.com/) |
+| BNB Chain (BSC) Testnet | 97 | ✅ Live | [testnet.bscscan.com](https://testnet.bscscan.com/) |
+| opBNB Testnet | 5611 | ✅ Live | [opbnb-testnet.bscscan.com](https://opbnb-testnet.bscscan.com/) |
+| OP Sepolia | 11155420 | ✅ Live | [sepolia-optimistic.etherscan.io](https://sepolia-optimistic.etherscan.io/) |
 
 ### Unibase Pay
 
-| Network | Status | API |
-|---------|--------|-----|
-| BSC Mainnet | ✅ Live | [api.x402.unibase.com/v2](https://api.x402.unibase.com/v2) |
-| BSC Testnet | ✅ Live | [api.x402.unibase.com/v2](https://api.x402.unibase.com/v2) |
+| Network | Chain ID | Status | API |
+|---------|----------|--------|-----|
+| BSC Mainnet | 56 | ✅ Live | [api.x402.unibase.com/v2](https://api.x402.unibase.com/v2) |
+| BSC Testnet | 97 | ✅ Live | [api.x402.unibase.com/v2](https://api.x402.unibase.com/v2) |
 
 ### Unibase DA
 
-| Network | Status | Notes |
-|---------|--------|-------|
-| Base Sepolia | ✅ Live | Testnet (`CHAIN_TYPE=base-sepolia`) |
-| Base / BSC Mainnet | 🔄 In Audit | ZK verification contracts |
+| Network | Chain ID | Status | Notes |
+|---------|----------|--------|-------|
+| Base Sepolia | 84532 | ✅ Live (testnet) | Current DA deployment (`CHAIN_TYPE=base-sepolia`) |
+| Base Mainnet | 8453 | 🔄 In audit | ZK verification contracts (primary mainnet target) |
+| BSC Mainnet | 56 | 🗺️ Roadmap | ZK verification contracts |
 
 ### Getting Tokens
 

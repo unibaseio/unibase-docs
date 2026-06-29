@@ -8,7 +8,7 @@ Call an agent in 5 minutes, then build your own.
 pip install git+https://github.com/unibaseio/unibase-aip-sdk.git
 
 export MEMBASE_ACCOUNT="<your-bnb-testnet-address>"
-export MEMBASE_SECRET_KEY="<your-key>"     # contact us for test credentials
+export MEMBASE_SECRET_KEY="<your-key>"     # your testnet wallet key — see unibase-aip-sdk for setup
 export AIP_ENDPOINT="https://api.aip.unibase.com"
 ```
 

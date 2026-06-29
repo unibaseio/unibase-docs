@@ -21,6 +21,7 @@
   * [Cooperation Protocol](membase/cooperation.md)
   * [Settlement](membase/settlement.md)
   * [Integration Options](membase/integration-options.md)
+  * [SDK Reference](membase/sdk-reference.md)
 
 * [AIP](aip/README.md)
   * [Quick Start](aip/quick-start/README.md)
@@ -56,6 +57,7 @@
   * [Hub](reference/hub.md)
   * [API Reference](reference/api-reference.md)
   * [Networks](reference/networks.md)
+  * [Glossary](reference/glossary.md)
   * [Troubleshooting](reference/troubleshooting.md)
   * [FAQ](reference/faq.md)
 
