@@ -48,6 +48,12 @@
     * [Docker](unibase-da/quick-start/nodes-bootstrap/docker.md)
   * [Nodes operations](unibase-da/quick-start/nodes-operations.md)
 
+* [Unibase Memory](unibase-memory/README.md)
+  * [Getting Started](unibase-memory/getting-started.md)
+  * [Features](unibase-memory/features.md)
+  * [Architecture](unibase-memory/architecture.md)
+  * [FAQ](unibase-memory/faq.md)
+
 * [Reference](reference/README.md)
   * [SDK](reference/sdk.md)
   * [Integrations](reference/integrations.md)

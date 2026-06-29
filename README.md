@@ -22,6 +22,7 @@ Unibase is building the foundation for the **Open Agent Internet** — a modular
 | **Build multi-agent systems** | [AIP Quick Start](get-started/aip-quickstart.md) |
 | **Enable agent payments** | [Unibase Pay Quick Start](get-started/pay-quickstart.md) |
 | **Run storage/validator nodes** | [Unibase DA Quick Start](get-started/da-quickstart.md) |
+| **Capture & reuse my AI chats** | [Unibase Memory](unibase-memory/getting-started.md) |
 
 ---
 
@@ -41,6 +42,7 @@ Unibase is building the foundation for the **Open Agent Internet** — a modular
 | **AIP Protocol** | Agent interoperability — identity, permissioning, shared memory. ERC-8004 & x402. |
 | **Unibase Pay** | x402 on BNB Chain — agents search, pay, access. Privy wallet, micropayments. |
 | **Unibase DA** | Data availability — 32–81 GB/s, honest-one fraud proofs, EB+ capacity. |
+| **Unibase Memory** | Chrome extension — capture, organize & reuse ChatGPT/Claude/Gemini chats. Encrypted, owned, verifiable. |
 
 ### 6. Ecosystem
 
