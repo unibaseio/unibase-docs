@@ -1,56 +1,63 @@
-# Membase Quick Start
+# Quick Start
 
-### 1. Install & Env
+Build your first agent: identity → private memory → shared domain → recall.
+
+### 1. Install & set a key
 
 ```bash
-pip install git+https://github.com/unibaseio/membase.git
-export MEMBASE_ID="<unique-id>"
-export MEMBASE_ACCOUNT="<bnb-address>"
-export MEMBASE_SECRET_KEY="<secret-key>"
+pip install "unibase-membase-sdk[recovery,runtime] @ git+https://github.com/unibaseio/unibase-membase.git"
+export MEMBASE_PRIVATE_KEY="0x..."     # or omit and use Wallet.generate()
 ```
 
-Get test BNB: [BNBChain Faucet](https://www.bnbchain.org/en/testnet-faucet)
+The `[recovery,runtime]` extras enable `memory.ingest` / `memory.answer`. Drop them for raw KV + cooperation only.
 
-### 2. Multi-Memory (Conversations)
+### 2. Create an agent
 
 ```python
-from membase.memory.multi_memory import MultiMemory
-from membase.memory.message import Message
+from unibase_membase import Membase, Wallet
 
-mm = MultiMemory(membase_account="default", auto_upload_to_hub=True, preload_from_hub=True)
-mm.add(Message(name="agent", content="Hello!", role="assistant", metadata=""), conversation_id="conv-1")
+agent = Membase(Wallet.from_env())     # identity = wallet address
+print(agent.address)
 ```
 
-### 3. Knowledge Base (RAG)
+### 3. Private memory
+
+Only this wallet can decrypt — a single-member [domain](../authorization.md).
 
 ```python
-from membase.knowledge.chroma import ChromaKnowledgeBase
-from membase.knowledge.document import Document
-
-kb = ChromaKnowledgeBase(persist_directory="/tmp/kb", membase_account="default", auto_upload_to_hub=True)
-kb.add_documents(Document(content="Your doc content.", metadata={"source": "docs"}))
+agent.private().set("profile/lang", {"value": "zh"})
+print(agent.private().get("profile/lang"))   # → {"value": "zh"}
 ```
 
-### 4. Chain Tasks (On-Chain Coordination)
+### 4. Shared memory across agents
 
 ```python
-from membase.chain.chain import membase_chain
+alice = Membase(Wallet.from_env())
+bob   = Membase(Wallet.generate())
 
-membase_chain.createTask("task-1", price=100000)
-membase_chain.register("alice")
-membase_chain.joinTask("task-1", "alice")
-membase_chain.finishTask("task-1", "alice")
+team = alice.create_domain("team:engineering")
+team.set("roadmap/q3", {"goal": "ship the agent-direct evolution"})
+
+code, _ = alice.invite_to(team)              # ECIES-wrapped key
+bob_team, _ = bob.accept_invite(code)
+print(bob_team.get("roadmap/q3", author=alice.address))
+# → {'goal': 'ship the agent-direct evolution'}
 ```
 
-### 5. Identity & Auth
+### 5. Recall (ask about the past)
 
 ```python
-membase_chain.register("your_agent_name")
-membase_chain.buy("agent_a", "agent_b")  # agent_b gets access to agent_a's resources
-membase_chain.has_auth("agent_a", "agent_b")  # check permission
+agent.memory.ingest(turns=[
+    {"role": "user", "content": "I'll go to Tokyo in November 2026."},
+    {"role": "user", "content": "Actually, moving the trip to August 2026."},
+])
+print(agent.memory.answer("When is the Tokyo trip?", query_date="2026-08-01"))
+# → {'answer': 'August 2026', ...}
 ```
 
-### Resources
+### Next
 
-* [Python SDK](https://github.com/unibaseio/membase) · [JS SDK](https://github.com/unibaseio/membase-js) · [MCP](https://github.com/unibaseio/membase-mcp)
-* [Memory Hub](https://hub.membase.unibase.com)
+* [Memory & Recall](../memory.md) · [Domains & Encryption](../authorization.md)
+* [Cooperation Protocol](../cooperation.md) — multi-agent sessions & games
+* [Settlement](../settlement.md) — on-chain metering
+* Runnable examples: [`examples/`](https://github.com/unibaseio/unibase-membase/tree/main/examples)

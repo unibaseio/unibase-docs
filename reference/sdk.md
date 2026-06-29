@@ -4,14 +4,21 @@
 
 | SDK | Link | Language |
 |-----|------|----------|
-| Python | [github.com/unibaseio/membase](https://github.com/unibaseio/membase) | Python |
-| JavaScript | [github.com/unibaseio/membase-js](https://github.com/unibaseio/membase-js) | JavaScript |
-| MCP | [github.com/unibaseio/membase-mcp](https://github.com/unibaseio/membase-mcp) | MCP Server |
+| Python (current) | [github.com/unibaseio/unibase-membase](https://github.com/unibaseio/unibase-membase) | Python ≥3.11 |
+| MCP | prebuilt `.mcpb` bundle on the [releases page](https://github.com/unibaseio/unibase-membase/releases) | MCP / Claude Desktop |
 
 **Install (Python):**
 ```bash
-pip install git+https://github.com/unibaseio/membase.git
+# Minimal (cooperation protocol + Hub access)
+pip install "unibase-membase-sdk @ git+https://github.com/unibaseio/unibase-membase.git"
+
+# With LLM recall + MCP adapter
+pip install "unibase-membase-sdk[mcp,recovery,runtime] @ git+https://github.com/unibaseio/unibase-membase.git"
 ```
+
+See [Membase → Integration Options](../membase/integration-options.md) for MCP and Skill setup.
+
+> Legacy 1.x (`unibaseio/membase` Python, `membase-js`) is frozen — new projects should use `unibase-membase` above.
 
 ### AIP
 
@@ -34,7 +41,7 @@ pip install git+https://github.com/unibaseio/aip-agent.git
 ```bash
 git clone https://github.com/unibaseio/unibase-da-sdk.git
 cd unibase-da-sdk
-export CHAIN_TYPE=opbnb-testnet
+export CHAIN_TYPE=base-sepolia
 cd example/upload && go build && ./upload --path=./file --sk=<secret_key>
 ```
 

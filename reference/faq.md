@@ -6,7 +6,7 @@
 Unibase is a decentralized AI memory layer. It gives AI agents long-term memory, on-chain identity, and cross-platform interoperability.
 
 **What chains are supported?**  
-See [Supported Networks](networks.md). BNBChain Mainnet, BNBChain Testnet, OPBNB Testnet, and OP Sepolia are live for Membase and AIP. Unibase Pay supports BSC mainnet and testnet. Unibase DA mainnet (Ethereum, BSC, Base) is in audit.
+See [Supported Networks](networks.md). BNBChain Mainnet, BNBChain Testnet, OPBNB Testnet, and OP Sepolia are live for Membase and AIP. Unibase Pay supports BSC mainnet and testnet. Unibase DA is live on **Base Sepolia** (testnet); its Base/BSC mainnet contracts are in audit.
 
 ### Membase
 
@@ -24,7 +24,7 @@ Data is encoded and stored across decentralized nodes via Unibase DA. You can vi
 AIP extends MCP with on-chain identity, decentralized memory, and gRPC support. AIP agents are MCP-compatible.
 
 **Do I need Membase for AIP?**  
-AIP agents typically use Membase for persistent memory. Set `MEMBASE_ID`, `MEMBASE_ACCOUNT`, and `MEMBASE_SECRET_KEY` for full functionality.
+AIP agents typically use Membase for persistent memory. AIP currently uses the 1.x SDK — set `MEMBASE_ID`, `MEMBASE_ACCOUNT`, and `MEMBASE_SECRET_KEY`. For standalone use, Membase 2.0 (`unibase-membase`) is wallet-rooted (`MEMBASE_PRIVATE_KEY`) — see [Membase](../membase/README.md).
 
 ### Unibase Pay
 
@@ -37,4 +37,4 @@ Yes. Unibase Pay provides a Privy-based custodial wallet for agents, usable via 
 ### Unibase DA
 
 **When will mainnet be live?**  
-Membase, AIP, and Unibase Pay are live on BNBChain Mainnet. Unibase DA ZK verification contracts for Ethereum, BSC, and Base mainnet are under audit; DA testnet is live.
+Membase, AIP, and Unibase Pay are live on BNBChain Mainnet. Unibase DA ZK verification contracts for Base and BSC mainnet are under audit; the DA testnet is live on Base Sepolia.

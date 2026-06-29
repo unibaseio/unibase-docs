@@ -7,8 +7,8 @@
 | Membase | BNB Mainnet, BNB Testnet, OPBNB Testnet, OP Sepolia | ✅ Live |
 | AIP | BNB Mainnet, BNB Testnet, OPBNB Testnet, OP Sepolia | ✅ Live |
 | Unibase Pay | BSC Mainnet, BSC Testnet | ✅ Live |
-| Unibase DA | OPBNB Testnet, OP Sepolia, BNB Testnet | ✅ Live |
-| Unibase DA (Mainnet) | Ethereum, BSC, Base | 🔄 In Audit |
+| Unibase DA | Base Sepolia | ✅ Live (testnet) |
+| Unibase DA (Mainnet) | Base, BSC | 🔄 In Audit |
 
 ### Explorers
 
@@ -19,6 +19,7 @@
 | OPBNB Testnet | [opbnb-testnet.bscscan.com](https://opbnb-testnet.bscscan.com/) |
 | OP Sepolia | [sepolia-optimistic.etherscan.io](https://sepolia-optimistic.etherscan.io/) |
 | BSC Mainnet | [bscscan.com](https://bscscan.com/) |
+| Base Sepolia (DA testnet) | [sepolia.basescan.org](https://sepolia.basescan.org/) |
 
 ### RPC Endpoints (Examples)
 
@@ -27,6 +28,7 @@
 | BNB Chain Mainnet | https://bsc-dataseed.binance.org |
 | BNB Chain Testnet | https://data-seed-prebsc-1-s1.binance.org:8545 |
 | OPBNB Testnet | https://opbnb-testnet-rpc.bnbchain.org |
+| Base Sepolia (DA testnet) | https://sepolia.base.org |
 
 ### Faucets
 

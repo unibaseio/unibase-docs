@@ -14,11 +14,13 @@
 
 * [Membase](membase/README.md)
   * [Quick Start](membase/quick-start/README.md)
-  * [Integration Options](membase/integration-options.md)
   * [Architecture](membase/architecture.md)
-  * [Identity](membase/identity.md)
-  * [Authorization](membase/authorization.md)
-  * [Multi Memory](membase/quick-start/multi-memory.md)
+  * [Wallet & Identity](membase/identity.md)
+  * [Domains & Encryption](membase/authorization.md)
+  * [Memory & Recall](membase/memory.md)
+  * [Cooperation Protocol](membase/cooperation.md)
+  * [Settlement](membase/settlement.md)
+  * [Integration Options](membase/integration-options.md)
 
 * [AIP](aip/README.md)
   * [Quick Start](aip/quick-start/README.md)

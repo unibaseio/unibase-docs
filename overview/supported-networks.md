@@ -20,10 +20,8 @@
 
 | Network | Status | Notes |
 |---------|--------|-------|
-| OPBNB Testnet | ✅ Live | Go SDK |
-| OP Sepolia | ✅ Live | Go SDK |
-| BNB Testnet | ✅ Live | Go SDK |
-| Ethereum / BSC / Base Mainnet | 🔄 In Audit | ZK verification contracts |
+| Base Sepolia | ✅ Live | Testnet (`CHAIN_TYPE=base-sepolia`) |
+| Base / BSC Mainnet | 🔄 In Audit | ZK verification contracts |
 
 ### Getting Tokens
 

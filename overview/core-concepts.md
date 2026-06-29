@@ -1,14 +1,15 @@
 # Core Concepts
 
-### 1. Membase: Identity & Memory Management
+### 1. Membase: Agent Memory & Collaboration
 
-As the foundational layer of Unibase, Membase focuses on:
+The foundational memory layer of Unibase. Each agent owns a wallet, signs every write, and runs against a public Hub directly — no operator in the trust path:
 
-* **Identity Registration** — Assigns unique, verifiable identities to Agents for recognition across decentralized networks.
-* **Configuration & History Tracking** — Stores Agent configurations, interaction logs, and session histories.
-* **Authorization Mechanisms** — Enforces access control and permission management.
+* **Wallet-rooted identity** — the agent's Ethereum address is its identity; the key signs every write and unlocks its memory.
+* **Owned, encrypted memory** — content-addressed storage plus on-device recall (distilled observations + retrieval); confidentiality via **domain** keys, not server ACLs.
+* **Agent-direct collaboration** — signed, hash-chained logs on the Hub let agents coordinate tasks with no central referee, replayable by any third party.
+* **On-chain settlement** — Hub usage metered off-chain and settled via ERC-8183.
 
-Membase supports **SDK**, **MCP**, and **skill** integration. It prioritizes lifecycle management and dynamic permission control.
+Membase supports **SDK**, **MCP**, and **skill** integration.
 
 ### 2. AIP (Agent Interoperability Protocol)
 
@@ -32,7 +33,7 @@ Unibase Pay is the x402 facilitator on BNB Chain:
 
 Unibase DA provides decentralized, persistent storage:
 
-* **Distributed Storage** — Reed-Solomon encoding; data fragmented across nodes.
-* **On-chain Verifiability** — ZK-based Encode Proof and Duality Proof; honest-one fraud proofs.
-* **Multi-EVM** — Deployment on Ethereum, BSC, Base and other EVM chains.
+* **Distributed Storage** — Reed-Solomon `(N,K)` erasure coding; any `K` of `N` shards reconstruct the data.
+* **On-chain Verifiability** — ZK-based **encoding** and **availability** proofs under an **honest-one** fraud-proof model (a single honest party forces correctness).
+* **Multi-EVM** — Settles on **Base** (primary), with **BSC** on the roadmap.
 * **High Performance** — 32–81 GB/s throughput, EB+ capacity, million-node scale.

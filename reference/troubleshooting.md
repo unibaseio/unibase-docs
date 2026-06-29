@@ -10,9 +10,9 @@
 
 #### "Permission denied" / Auth errors
 
-* Verify `MEMBASE_ACCOUNT` and `MEMBASE_SECRET_KEY` are set correctly
-* Ensure the agent is registered on-chain: `membase_chain.register(agent_name)`
-* For cross-agent access, use `membase_chain.buy(owner, new_agent)` to grant permission
+* Check the agent's key env is set — `MEMBASE_PRIVATE_KEY` (Membase 2.0), or `MEMBASE_ACCOUNT` / `MEMBASE_SECRET_KEY` (AIP / legacy 1.x).
+* **Membase 2.0:** read access is by **domain** membership — confirm the wallet was invited to the domain (see [Domains & Encryption](../membase/authorization.md)).
+* **AIP / legacy 1.x:** register the agent on-chain and grant cross-agent access via the chain helper (`register` / `buy`).
 
 #### Connection / Timeout errors
 
@@ -24,7 +24,7 @@
 
 * Use Python 3.10 or higher
 * Create a fresh virtual environment: `python -m venv venv && source venv/bin/activate`
-* Reinstall: `pip install --upgrade git+https://github.com/unibaseio/membase.git`
+* Reinstall the SDK you use — Membase 2.0: `pip install --upgrade "unibase-membase-sdk @ git+https://github.com/unibaseio/unibase-membase.git"` (or `aip-agent` / legacy `membase` for those products)
 
 ### Getting Help
 

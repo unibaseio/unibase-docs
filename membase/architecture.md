@@ -1,57 +1,58 @@
-# 📚 Architecture
+# Architecture
 
-### What is Membase?
+Membase rests on one invariant: **each agent owns a wallet; the wallet's private key is both its signing identity and the keying material for its memory.** The only shared storage is a public **Hub** that stores wallet-scoped bytes. Every higher-level property — confidentiality, recall, collaboration, settlement — is built **above** the Hub, client-side, so no operator sits in the trust path.
 
-**Membase** is the core decentralized AI memory and agent management layer of the Unibase ecosystem.\
-It handles agent identity registration, configuration management, memory storage, and enables secure remote interaction services — powered by on-chain verification and decentralized storage.
+### Topology
 
-At its heart is the **Agent Hub**, coordinating interactions across blockchain (Chain) and **Unibase DA** (decentralized data availability layer).
+```
+                Membase Hub  (decentralized KV, hub.membase.unibase.com)
+                per-(wallet, cid) bytes
+                          ▲
+                          │  wallet-signed pointers + encrypted values
+                          │  (no server in this path)
+            ┌─────────────┴─────────────┐
+            │                           │
+     ┌──────┴───────┐            ┌───────┴──────┐
+     │   Agent      │            │   Membase    │
+     │  Wallet      │  wallet-   │   Server     │
+     │  HubClient   │ ◄ signed ► │  Persistence │
+     │  Domains     │   HTTP     │  Recovery    │
+     │  LocalMemory │            │  Runtime     │
+     │  Protocol Log│            │  Settlement  │
+     │  (SQLite +   │            │  Metering    │
+     │   FAISS,     │            └──────┬───────┘
+     │   on-device) │                   │
+     └──────┬───────┘                   │
+            │ ref pub-sub               │
+            ▼                           ▼
+       ┌─────────┐                ┌───────────┐
+       │ Channel │                │   Chain   │
+       │ (ws/p2p)│                │ ERC-8183  │
+       └─────────┘                └───────────┘
+```
 
-***
+The **Server is optional**. Memory, domains, and the cooperation protocol run agent-direct against the Hub. The Server adds managed persistence, recall (Recovery + Runtime), and on-chain settlement/metering — all wallet-authenticated, with no privileged read access to your data.
 
-### 🧩 Core Components
+### The four layers above the Hub
 
-#### 1. Agent Hub (Agent Management Center)
+| Layer | Responsibility | You use |
+|---|---|---|
+| **Persistence** | Wallet-rooted, addressable storage: visibility namespaces, domain-keyed encryption, signed + hash-chained writes, cross-device sync. | `private()`, `create_domain()`, `set()/get()` |
+| **Memory** | Turns raw history into recall-ready memory. *Recovery* distills turns into immutable observations linked by supersession edges (offline, once per session); *Runtime* serves recall with no LLM on the read path. | `memory.ingest()`, `memory.recall()`, `memory.answer()` |
+| **Protocol** | Agent-direct collaboration: each wallet appends signed, hash-chained `Entry` records to its `Log`; a `Session` bounds an interaction; outcomes are pure functions of the merged view, replayable by any third party. | `Cooperation`, `core.protocol`, `games` |
+| **Settlement** | Meters Hub usage off-chain into a per-user running total, committed on-chain via an ERC-8183 channel — one transaction per flush. | `MembaseClient` metering / settle |
 
-Manages the full lifecycle and interaction of agents, consisting of three key sub-modules:
+### Two trust boundaries
 
-* **Link Hub**\
-  Facilitates remote interaction services, enabling agents to connect with external services or other agents.
-* **Config Hub**\
-  Manages agent configurations, including identity, permissions, and operational parameters. Supports efficient agent discovery and querying.
-* **Memory Hub**\
-  Stores persistent data, conversation history, and agent interaction records to ensure data continuity and traceability.
+* **L1 — raw memory**: agent ↔ Hub directly. Values are encrypted under the agent's domain key before upload; the Hub (and any operator) sees only ciphertext.
+* **L2 — recall memory**: observations + retrieval graph live on the **agent's own machine** (SQLite + FAISS), populated by Recovery. They never leave the agent.
 
-***
+### What we trust — and what we don't
 
-#### 2. Chain (Blockchain Layer)
+**Trusted:** the agent's machine + its private key, and standard cryptographic primitives (signatures, hashes, key encapsulation). **Not trusted:** the Hub stores and returns bytes but never interprets or enforces protocol rules; other agents may be malicious; the network and the pub-sub Channel are untrusted — the Channel carries only references, and every body is verified by signature + hash chain after fetch.
 
-* Stores agent identities and permission mappings on-chain.
-* Provides cryptographic credibility for agent identities.
-* Supports verifiable operations by synchronizing with Unibase DA for decentralized storage.
+### Why it matters
 
-***
-
-#### 3. Unibase DA (Decentralized Data Availability Layer)
-
-* Stores agent-related information off-chain while preserving verifiability.
-* Ensures decentralized, tamper-proof, and highly available data access.
-* Regularly syncs with on-chain data to ensure maximum integrity and transparency.
-
-***
-
-### 🔄 Interaction Workflow
-
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
-
-<table><thead><tr><th width="62.3828125" align="center">Step</th><th>Description</th></tr></thead><tbody><tr><td align="center">1</td><td><strong>Agent Registration</strong>: Agents register their identity and permission data on-chain.</td></tr><tr><td align="center">2</td><td><strong>Synchronization</strong>: Agent Hub synchronizes registration and permission information from the blockchain.</td></tr><tr><td align="center">3</td><td><strong>Remote Interaction</strong>: Agents connect via the Link Hub, with identity verification against the blockchain.</td></tr><tr><td align="center">4</td><td><strong>Configuration Management</strong>: Agents register or update operational configurations through the Config Hub.</td></tr><tr><td align="center">5</td><td><strong>Memory Upload</strong>: Agent-generated data (interactions, history) is uploaded to the Memory Hub.</td></tr><tr><td align="center">6</td><td><strong>Persistence</strong>: Data from the Agent Hub is synchronized to Unibase DA for decentralized, persistent storage.</td></tr></tbody></table>
-
-***
-
-### 🌟 Why Membase Matters
-
-* Enables agents to have verifiable, decentralized identities.
-* Supports agent memory persistence, cross-platform interoperability, and self-evolution.
-* Provides a foundation for building the **Open Agent Internet**.
-
-***
+* **Own your memory** — usable from any device holding the key, never visible to a third-party operator.
+* **Verifiable collaboration** — every action is signed and replayable; disputes resolve from public bytes, not an operator's word.
+* **A foundation for the Open Agent Internet** — portable identity, portable memory, and value transfer between agents from any vendor.
