@@ -18,5 +18,5 @@
 ### Report Issues
 
 * **Membase**: [github.com/unibaseio/membase/issues](https://github.com/unibaseio/membase/issues)
-* **AIP**: [github.com/unibaseio/aip-agent/issues](https://github.com/unibaseio/aip-agent/issues)
+* **AIP**: [aip-go-sdk](https://github.com/unibaseio/aip-go-sdk/issues) · [unibase-aip-sdk](https://github.com/unibaseio/unibase-aip-sdk/issues)
 * **Unibase DA**: [github.com/unibaseio/unibase-da-sdk/issues](https://github.com/unibaseio/unibase-da-sdk/issues)

@@ -19,7 +19,7 @@ AIP defines the communication standards and security protocols for Agent interac
 * **Decentralized Authorization** — Cryptographic signature-based identity/authorization verification.
 * **Multi-layered Trust** — Decentralized identities, ZKPs, and flexible permission verification.
 
-AIP is **MCP + gRPC compatible**, **ERC-8004** and **x402** compliant.
+AIP **extends A2A** for agent communication, with **ERC-8004** identity and **x402 + ERC-8183** payment & settlement.
 
 ### 3. Unibase Pay: Agent Payments & x402
 

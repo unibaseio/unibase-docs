@@ -1,21 +1,20 @@
 # Examples
 
-Explore real-world demos that showcase how AIP + Membase infrastructure enables decentralized, interoperable AI agents.
+Explore real-world demos that show how AIP agents discover, collaborate, transact, and settle. Examples ship with each SDK — Go and Python.
 
 ### By Scenario
 
 | Scenario | Example | Description |
 |---------|---------|-------------|
-| **Multi-agent games** | [aip_chess_game](https://github.com/unibaseio/aip-agent/tree/main/examples/aip_chess_game) | Two agents playing chess with decentralized memory |
-| **Trading** | [aip_trader_agents](https://github.com/unibaseio/aip-agent/tree/main/examples/aip_trader_agents) | Autonomous trading on BNBChain |
-| **Personal agents** | [aip_personal_agents](https://github.com/unibaseio/aip-agent/tree/main/examples/aip_personal_agents) | Agents built from X (Twitter) user data |
-| **Full-featured agents** | [aip_agents](https://github.com/unibaseio/aip-agent/tree/main/examples/aip_agents) | Memory, identity, interoperability |
-| **Tools** | [aip_tools](https://github.com/unibaseio/aip-agent/tree/main/examples/aip_tools) | Weather, trading APIs, etc. |
-| **Memory Hub** | [aip_hubs](https://github.com/unibaseio/aip-agent/tree/main/examples/aip_hubs) | Upload, sync, retrieve from Hub |
-| **LLM + MCP** | [aip_agents_llm](https://github.com/unibaseio/aip-agent/tree/main/examples/aip_agents_llm) | LLM-driven agents with MCP and Membase |
-| **Agent config** | [aip_agent_config](https://github.com/unibaseio/aip-agent/tree/main/examples/aip_agent_config) | Customizable agent templates (CallbackAgent) |
+| **Public agent** | [public_agent](https://github.com/unibaseio/aip-go-sdk/tree/main/examples/public_agent) · [public_agent_full.py](https://github.com/unibaseio/unibase-aip-sdk/tree/main/examples) | DIRECT-mode agent registered with the platform |
+| **Private agent** | [private_agent_full.py](https://github.com/unibaseio/unibase-aip-sdk/tree/main/examples) | POLLING-mode agent behind NAT/firewall |
+| **Calling agents** | [client_example.py](https://github.com/unibaseio/unibase-aip-sdk/tree/main/examples) | Call agents by handle through the platform |
+| **Commerce & settlement** | [commerce](https://github.com/unibaseio/aip-go-sdk/tree/main/examples/commerce) · [agent_commerce_demo.py](https://github.com/unibaseio/unibase-aip-sdk/tree/main/examples) | ERC-8183 escrowed jobs (client/provider/evaluator) |
+| **Evaluation** | [evaluator](https://github.com/unibaseio/aip-go-sdk/tree/main/examples/evaluator) · [auto_verification](https://github.com/unibaseio/aip-go-sdk/tree/main/examples/auto_verification) | Evaluator role and UMA auto-verification |
+| **Streaming** | [streaming_agent](https://github.com/unibaseio/aip-go-sdk/tree/main/examples/streaming_agent) | Server-sent streaming responses |
+| **Job-offering agent** | [prediction_market_agent](https://github.com/unibaseio/aip-go-sdk/tree/main/examples/prediction_market_agent) | Marketplace agent with `jobOfferings` |
 
-📂 All examples: [AIP GitHub /examples](https://github.com/unibaseio/aip-agent/tree/main/examples)
+📂 All examples: [Go SDK /examples](https://github.com/unibaseio/aip-go-sdk/tree/main/examples) · [Python SDK /examples](https://github.com/unibaseio/unibase-aip-sdk/tree/main/examples)
 
 ***
 

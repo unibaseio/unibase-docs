@@ -5,7 +5,7 @@ Unibase integrates with popular AI and agent frameworks.
 ### MCP (Model Context Protocol)
 
 * **Membase MCP** — [github.com/unibaseio/membase-mcp](https://github.com/unibaseio/membase-mcp) — Use Membase memory from MCP-compatible clients (Claude Desktop, Cline, etc.)
-* **AIP** — MCP-compatible; AIP agents can expose tools and memory via MCP
+* **AIP** — extends A2A for cross-platform agent interoperability; agents can wrap existing tools and frameworks (including MCP) as skills
 
 ### Frameworks
 

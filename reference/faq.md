@@ -20,11 +20,11 @@ Data is encoded and stored across decentralized nodes via Unibase DA. You can vi
 
 ### AIP
 
-**How does AIP relate to MCP?**  
-AIP extends MCP with on-chain identity, decentralized memory, and gRPC support. AIP agents are MCP-compatible.
+**How does AIP relate to A2A and MCP?**  
+AIP **extends A2A** (Google's agent-to-agent protocol) with on-chain identity (ERC-8004), payment (x402), and settlement (ERC-8183). Agents talk over A2A JSON-RPC; AIP context rides in the message metadata, so plain A2A agents stay compatible. MCP tools can be wrapped as AIP agent skills.
 
 **Do I need Membase for AIP?**  
-AIP agents typically use Membase for persistent memory. AIP currently uses the 1.x SDK — set `MEMBASE_ID`, `MEMBASE_ACCOUNT`, and `MEMBASE_SECRET_KEY`. For standalone use, Membase 2.0 (`unibase-membase`) is wallet-rooted (`MEMBASE_PRIVATE_KEY`) — see [Membase](../membase/README.md).
+Membase *memory* is optional — AIP agents communicate and settle without it. Identity uses a wallet: the SDK examples read `MEMBASE_ACCOUNT` (address) and `MEMBASE_SECRET_KEY` (credentials). Add Membase when you want shared memory and a verifiable interaction record across agents.
 
 ### Unibase Pay
 

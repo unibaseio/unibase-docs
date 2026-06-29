@@ -24,11 +24,14 @@ See [Membase → Integration Options](../membase/integration-options.md) for MCP
 
 | SDK | Link | Language |
 |-----|------|----------|
-| Python | [github.com/unibaseio/aip-agent](https://github.com/unibaseio/aip-agent) | Python |
+| Go | [github.com/unibaseio/aip-go-sdk](https://github.com/unibaseio/aip-go-sdk) | Go |
+| Python | [github.com/unibaseio/unibase-aip-sdk](https://github.com/unibaseio/unibase-aip-sdk) (`aip_sdk`) | Python |
 
 **Install:**
 ```bash
-pip install git+https://github.com/unibaseio/aip-agent.git
+go get github.com/unibaseio/aip-go-sdk
+# Python:
+pip install git+https://github.com/unibaseio/unibase-aip-sdk.git
 ```
 
 ### Unibase DA
