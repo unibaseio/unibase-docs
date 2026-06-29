@@ -66,16 +66,11 @@ Unibase Docs
 │   └── api-reference.md             # Optional, or link to reference
 │
 ├── 📚 4. AIP
-│   ├── README.md                    # Overview + one-line install + 30s example
-│   ├── quick-start.md               # Full Quick Start
-│   ├── guides/
-│   │   ├── agent-tool-grpc.md
-│   │   ├── agent-tool-sse.md
-│   │   ├── agent-agent.md
-│   │   └── chess-game.md
-│   ├── design.md
-│   ├── implementation.md
-│   └── tool.md
+│   ├── README.md                    # Overview + positioning + why-table
+│   ├── quick-start/README.md        # Build & call an agent (Go + Python)
+│   ├── design.md                    # Core Concepts (identity/comms/discovery/settlement)
+│   ├── implementation.md            # Architecture (platform/gateway/SDKs/contracts)
+│   └── agent-interaction-process.md
 │
 ├── 📚 5. Unibase Pay
 │   ├── README.md                    # Overview + API URL + 30s call
