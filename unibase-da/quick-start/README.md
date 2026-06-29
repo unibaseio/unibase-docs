@@ -10,7 +10,7 @@ cd unibase-da-sdk
 ### 2. Upload File
 
 ```bash
-export CHAIN_TYPE=opbnb-testnet  # or op-sepolia, bnb-testnet
+export CHAIN_TYPE=base-sepolia
 cd example/upload
 go build
 ./upload --path=./your-file --sk=<secret_key>
@@ -28,9 +28,9 @@ go build
 
 | Network | CHAIN_TYPE |
 |---------|------------|
-| OPBNB Testnet | opbnb-testnet |
-| OP Sepolia | op-sepolia |
-| BNB Testnet | bnb-testnet |
+| Base Sepolia (testnet) | `base-sepolia` |
+| Base Mainnet (roadmap) | `base` |
+| BSC (roadmap) | `bsc-mainnet` |
 
 ### Next Steps
 

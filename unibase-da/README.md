@@ -1,43 +1,42 @@
 # Unibase DA
 
-High-performance data availability layer for AI — **on-chain ZK verification**, **honest-one** security (no majority assumption), **100 GB/s** throughput. Powers Membase.
-
-### 30-Second Example
-
-```bash
-git clone https://github.com/unibaseio/unibase-da-sdk.git
-cd unibase-da-sdk
-export CHAIN_TYPE=opbnb-testnet
-cd example/upload && go build && ./upload --path=./file --sk=<secret_key>
-```
+The decentralized **data availability + storage** layer for AI — availability is verified **on-chain with ZK fraud proofs**, secured by an **Honest-One** model (no majority assumption). It is the verifiable storage substrate beneath Membase.
 
 ### Why Unibase DA
 
-| vs. EigenDA/Celestia | Unibase DA |
+| vs. EigenDA / Celestia / Avail | Unibase DA |
 |----------------------|------------|
-| Off-chain verification | **On-chain ZK** |
+| Off-chain committee / sampling | **On-chain ZK verification** |
 | Honest majority | **Honest one** |
-| 10 MB/s – 50 GB/s | **100 GB/s** |
-| Validity proofs | **Fraud proofs** |
+| Validity / sampling proofs | **Fraud proofs (optimistic)** |
+| On-chain cost per write | **Cost only on dispute** |
 
-### Node Types
+* **Trustless writes** — the client cryptographically verifies the network encoded exactly its bytes; no single node is trusted.
+* **Cheap by default** — expensive on-chain ZK verification runs only when a proof is challenged.
+* **Erasure-coded durability** — Reed–Solomon `(N,K)`; any `K` of `N` shards reconstruct the data.
 
-| Type | Role |
+### Node roles
+
+| Role | Responsibility |
 |------|------|
-| **Stream** | Encode data; reward on proof submission |
-| **Storage** | Store encoded data; submit proofs; epoch rewards |
-| **Validator** | Watch proofs; challenge if wrong; earn rewards |
+| **Stream** | Encode uploads, commit, stage shards |
+| **Storage** | Store shards, submit availability proofs (stake-backed) |
+| **Validator** | Re-verify proofs, challenge fraud — *one* honest validator secures the network |
+| **Gateway** | Read-only indexer + HTTP API for SDK/UI |
+| **Hub** | Lightweight gateway for app integrations |
 
-### Supported Networks
+### Networks
 
-* OPBNB Testnet · OP Sepolia · BNB Testnet
+| Network | `CHAIN_TYPE` | Status |
+|---------|--------------|--------|
+| Base Sepolia | `base-sepolia` | ✅ Testnet |
+| Base Mainnet | `base` | 🛣 Roadmap |
+| BSC | `bsc-mainnet` | 🛣 Roadmap |
 
-### Next Steps
+### Next steps
 
-* [Quick Start](quick-start/README.md)
-* [Nodes Bootstrap](quick-start/nodes-bootstrap/README.md)
-* [Nodes Operations](quick-start/nodes-operations.md)
-
-### Resources
-
-* [unibase-da-sdk](https://github.com/unibaseio/unibase-da-sdk)
+* [Architecture](components.md) — how it works, end to end
+* [Storage](unibase-storage.md) — the programmable storage layer
+* [Quick Start](quick-start/README.md) — upload & download a file
+* [Nodes Bootstrap](quick-start/nodes-bootstrap/README.md) — run a Stream / Storage / Validator node
+* [Nodes Operations](quick-start/nodes-operations.md) — balances, revenue, withdrawals

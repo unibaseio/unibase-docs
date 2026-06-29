@@ -17,7 +17,7 @@ Run Unibase DA nodes: **Stream** (encode), **Storage** (store + prove), **Valida
 ### Environment
 
 ```bash
-export CHAIN_TYPE=opbnb-testnet  # or op-sepolia, bnb-testnet
+export CHAIN_TYPE=base-sepolia
 ```
 
 ### Quick Links

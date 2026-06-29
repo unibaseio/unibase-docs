@@ -38,7 +38,7 @@
   * [API Reference](unibase-pay/api-reference.md)
 
 * [Unibase DA](unibase-da/README.md)
-  * [DA](unibase-da/components.md)
+  * [Architecture](unibase-da/components.md)
   * [Storage](unibase-da/unibase-storage.md)
   * [Quick Start](unibase-da/quick-start/README.md)
   * [Nodes Bootstrap](unibase-da/quick-start/nodes-bootstrap/README.md)

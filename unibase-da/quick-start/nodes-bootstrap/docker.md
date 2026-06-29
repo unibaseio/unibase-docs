@@ -15,7 +15,7 @@ services:
       - /home/ubuntu/.plonk:/root/.plonk
     restart: on-failure:0
     environment:
-      CHAIN_TYPE: ""  # opbnb-testnet or op-sepolia
+      CHAIN_TYPE: ""  # base-sepolia or base-sepolia
       MAX_SIZE: "100GB" # max storage 
 networks:
   default:
@@ -35,7 +35,7 @@ services:
       - /home/ubuntu/.plonk:/root/.plonk
     restart: on-failure:0
     environment:
-      CHAIN_TYPE: ""  # opbnb-testnet or op-sepolia
+      CHAIN_TYPE: ""  # base-sepolia or base-sepolia
       EXPOSE_URL: ""  # required
 networks:
   default:
@@ -55,7 +55,7 @@ services:
       - /home/ubuntu/.plonk:/root/.plonk
     restart: on-failure:0
     environment:
-      CHAIN_TYPE: ""  # opbnb-testnet or op-sepolia
+      CHAIN_TYPE: ""  # base-sepolia or base-sepolia
 networks:
   default:
     driver: bridge
@@ -73,7 +73,7 @@ services:
       - /home/ubuntu/data/hub:/data
     restart: on-failure:0
     environment:
-      CHAIN_TYPE: "" # opbnb-testnet or op-sepolia
+      CHAIN_TYPE: "" # base-sepolia or base-sepolia
       EXPOSE_URL: "" # required
       MAX_SIZE: "4MB" # file max size 
 networks:

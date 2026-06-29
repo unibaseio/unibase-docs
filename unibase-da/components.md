@@ -1,94 +1,106 @@
-# DA
+# Architecture
 
-**Unibase DA** is an AI-native, decentralized data availability (DA) and storage layer built for high-throughput, secure, and verifiable memory systems — purposefully designed to overcome the limitations of existing DAS-based (Data Availability Sampling) architectures.
+**Unibase DA** is an AI-native, decentralized **data availability + storage** layer. Unlike DAS-based systems (Celestia, EigenDA, Avail) that verify availability off-chain through a committee or sampling, Unibase DA verifies stored data **on-chain with zero-knowledge proofs** under a **fraud-proof (optimistic) model**: writes are cheap and trustless, and the expensive verification runs **only when someone disputes**.
 
-***
-
-### ❗ Challenges with Existing DAS Solutions
-
-Traditional DAS systems like Celestia, EigenDA, and Avail face several limitations:
-
-* **Weakened Security Guarantees**\
-  Security relies on DAS clients' consensus protocols, which are often weaker than L1 chains like Ethereum.
-* **High Transmission Overhead**\
-  Large-scale data incurs significant network costs due to redundancy and sampling inefficiencies.
+Its defining property is the **Honest-One** security model — a **single** honest participant is enough to force correctness, with no honest-majority assumption.
 
 ***
 
-### 🔧 Core Features
+### Why on-chain verification
 
-#### ✅ On-Chain Verification
+|  | DAS-based DA | **Unibase DA** |
+|---|---|---|
+| Availability check | Off-chain committee / sampling | **On-chain ZK proof** |
+| Trust assumption | Honest majority | **Honest one** |
+| Proof style | Validity / sampling | **Fraud proof (optimistic)** |
+| On-chain cost | Per write | **Only on dispute** |
 
-* **Encode Proof**\
-  Verifies Reed-Solomon encoding correctness directly on-chain.
-* **Duality Proof**\
-  Proves data has been continuously available on-chain during its committed validity window.
-* **Security Model**\
-  Requires only **one honest validator** to ensure the integrity of the system.
-
-***
-
-#### 🚀 High Performance
-
-* **Massive Data Write Speed**\
-  Supports data ingestion up to **100GB/s**.
-* **Efficient Offline Encoding**\
-  Reed-Solomon encoding performance reaches **100MB/s**, suitable for batch processing.
-* **Minimal Online Load**\
-  On-chain computation is triggered **only during fraud detection**, making the system cost-efficient and fast under honest conditions.
+The security of a stored blob inherits the security of the settlement chain itself, not a separate committee.
 
 ***
 
-#### ♾️ Infinite Scalability
+### Data model
 
-* **Exabyte-Scale Storage**\
-  Designed to handle EB+ level data volume and intensive read/write workloads.
-* **Million-Node Expansion**\
-  Horizontally scalable architecture supports large-scale distributed networks.
-* **Custom Private Storage Pools**\
-  Enterprises and protocols can deploy their own private DA environments.
+Data is **content-addressed** and organized in three levels. Developers interact with these via the SDK / gateway API:
 
-***
+| Level | What it is | Identifier |
+|-------|-----------|-----------|
+| **File** | What you upload | receipt of its pieces |
+| **Piece** | A slice of a file (up to ~1 GB) | hex of its commitment |
+| **Replica** | One erasure-coded shard of a piece | hex of its commitment |
 
-### 🧱 Design Overview
-
-#### 📦 Decentralized Storage
-
-* Users submit **blob commitments and RS parameters** to the chain.
-* Data is split into encoded fragments and distributed across **storage nodes**.
-* Blobs can vary in size and lifespan, supporting flexible storage needs.
-
-#### 🔐 Decentralized Verification
-
-* **No DAC** (Data Availability Committee).\
-  Any storage node can submit **on-chain proofs**.
-* **Encode Proof**\
-  Demonstrates a node correctly stores its assigned encoded shard.
-* **Duality Proof**\
-  Confirms the availability of data over time by periodic proof submissions.
+* A piece is **erasure-coded** with a Reed–Solomon `(N, K)` policy: `K` data shards expand to `N` shards, and **any `K` of the `N`** reconstruct the data. Supported policies: **6/4, 14/7, 32/16, 64/32**.
+* Each replica is distributed to a **distinct storage node**, so a piece survives the loss of up to `N − K` nodes.
+* Every name is the hex of a cryptographic commitment, so identifiers are **self-verifying** — the same bytes always produce the same name.
 
 ***
 
-### 💰 On-Chain Verification Efficiency
+### Write & read paths
 
-* **Proof Aggregation**\
-  Reduces cost by batching multiple proof verifications per storage node.
-* **Optimistic Verification**\
-  Proofs are assumed valid unless challenged. If missing or incorrect proofs are detected:
-  * Anyone can verify them **off-chain**.
-  * A challenge can be initiated **on-chain**.
+**Write** — `upload`:
 
-This **optimistic + aggregated model** ensures security with minimal on-chain gas usage.
+```
+file ─▶ split into pieces ─▶ erasure-encode (N,K) ─▶ commit (KZG) ─▶ stage on stream node
+     ─▶ storage nodes pull their shard ─▶ register replica on-chain (with proof)
+```
+
+The client receives a **receipt** (piece + replica names) and can verify, trustlessly, that the network encoded exactly the bytes it submitted — without trusting any single node.
+
+**Read** — `download`:
+
+```
+look up replicas on-chain ─▶ fetch any K surviving shards ─▶ Reed–Solomon reconstruct ─▶ original file
+```
+
+Because reconstruction needs only `K` of `N` shards, reads tolerate node churn.
 
 ***
 
-### 🔚 Summary
+### Proofs & the fraud-proof game
 
-Unibase DA redefines what DA layers can achieve for AI and data-intensive Web3 applications:
+Storage is kept honest by two on-chain proof families and an optimistic challenge–response game:
 
-* ✅ **On-chain verifiability using ZK and fraud proofs**
-* ✅ **Unmatched throughput and scalability**
-* ✅ **Tamper-proof storage with cost-effective validation**
-* ✅ **Built to meet the data demands of AI Agents, models, and decentralized computation**
+* **Encoding proof** — proves a replica is a valid shard of a correctly Reed–Solomon-encoded piece (not fabricated or mis-encoded).
+* **Availability proof** — each epoch, a storage node proves it still physically holds the data it committed to, against a **deterministic, unpredictable challenge** (so it cannot pre-compute or reference another node's copy).
 
-> A new standard in high-performance, programmable, and secure data availability infrastructure.
+The game is **optimistic**:
+
+1. On write, a node submits a **cheap** proof; it is **accepted without on-chain verification**.
+2. Anyone (a **validator**) re-checks proofs **off-chain**. If one is missing or wrong, they open an **on-chain challenge**.
+3. The accused node must answer within a time window with a full proof. The dispute is resolved by **on-chain ZK verification** (a logarithmic bisection localizes the faulty shard, keeping each on-chain step tiny).
+4. A node that fails to prove is **slashed**; the honest challenger is rewarded.
+
+Result: honest operation costs almost no gas; cheating is caught and penalized by **any one** honest watcher.
+
+***
+
+### Node roles
+
+The network has no central orchestrator — all coordination is **on-chain state** plus event sync. Five roles:
+
+| Role | Responsibility |
+|------|---------------|
+| **Stream** | Ingests uploads, erasure-encodes, commits, and temporarily stages shards until storage nodes commit them on-chain. |
+| **Storage** | Pulls assigned shards, registers replicas on-chain with proofs, submits availability proofs each epoch. Stake-backed. |
+| **Validator** | Independently re-verifies proofs and drives the fraud-proof game (challenge → settle). One honest validator secures the system. |
+| **Gateway** | Read-only indexer + HTTP API mirroring chain state (files, pieces, replicas, nodes) for fast SDK/UI queries. |
+| **Hub** | Lightweight gateway for app integrations (e.g. Membase memory). |
+
+***
+
+### Settlement & economics
+
+* Storage nodes **stake** the protocol token; misbehavior proven on-chain is **slashed**.
+* Honest work earns **per-epoch storage rewards** and **streaming fees**; challengers earn a share of slashed stake.
+* Settlement runs on **Base** (primary), with **BSC** on the roadmap.
+
+***
+
+### How it fits Unibase
+
+Unibase DA is the **verifiable storage substrate** beneath the stack:
+
+* **Membase** persists agent memory on DA for tamper-evident, on-chain-verifiable recall.
+* **Storage** ([next page](unibase-storage.md)) builds the programmable, assetizable storage layer on top.
+
+> A high-throughput DA layer where availability is a **provable on-chain fact**, not a committee's promise.

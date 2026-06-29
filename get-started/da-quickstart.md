@@ -12,7 +12,7 @@ cd unibase-da-sdk
 ### 2. Set Environment
 
 ```bash
-export CHAIN_TYPE=opbnb-testnet
+export CHAIN_TYPE=base-sepolia
 ```
 
 ### 3. Upload a File
@@ -23,11 +23,11 @@ go run upload.go --path=./your-file --sk=<your-secret-key>
 
 ### 4. Supported Networks
 
-| Network | Status |
-|---------|--------|
-| OPBNB Testnet | ✅ Live |
-| OP Sepolia | ✅ Live |
-| BNB Testnet | ✅ Live |
+| Network | `CHAIN_TYPE` | Status |
+|---------|-------------|--------|
+| Base Sepolia | `base-sepolia` | ✅ Testnet |
+| Base Mainnet | `base` | 🛣 Roadmap |
+| BSC | `bsc-mainnet` | 🛣 Roadmap |
 
 ### 5. Data Flow
 
