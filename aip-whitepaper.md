@@ -6,7 +6,7 @@
 
 🔗 _**Building the Open Agent Internet.**_
 
-**AIP (Agent Interoperability Protocol)** is the first Web3-native interoperability protocol for AI agents — enabling on-chain identity, persistent memory, and cross-platform coordination. It addresses the core infrastructure gap for autonomous AI in Web3.
+**AIP (Agent Interoperability Protocol)** is a Web3-native protocol for cross-platform agent collaboration and payment — enabling on-chain identity, machine payments, persistent memory, and verifiable reputation. Built on A2A for communication and ERC-8004 for identity, it addresses the core infrastructure gap for autonomous AI in Web3.
 
 ***
 
@@ -20,9 +20,10 @@
 
 #### ✅ AIP Offers
 
-* 🌐 **Cross-agent & tool communication** via gRPC + MCP-compatible interface
-* 🧠 **Persistent memory** stored in Membase with onchain proof
-* 🆔 **Verifiable onchain identity** + permission control
+* 🌐 **Cross-platform agent communication** — built on A2A (JSON-RPC); MCP tools wrap as skills
+* 💸 **Payments & settlement** — x402 micropayments and ERC-8183 escrowed jobs
+* 🆔 **Verifiable onchain identity** (ERC-8004) + permission control
+* 🧠 **Persistent memory & reputation** — Membase memory with onchain proof, feeding verifiable reputation
 * 🔗 **Composable workflows** across LLMs, tools, and agents
 
 ***
@@ -35,9 +36,10 @@
 | **Cross-Agent Communication** | ❌                           | ✅                            | ✅                                         |
 | **Tool Integration**          | ✅                           | ❌                            | ✅                                         |
 | **Built-in Memory Support**   | ❌                           | ❌                            | ✅ (via Membase)                           |
-| **On-Chain Identity & Auth**  | ❌                           | ❌                            | ✅ (via ZK + blockchain)                   |
+| **On-Chain Identity & Auth**  | ❌                           | ❌                            | ✅ (ERC-8004 + ZK)                         |
+| **Payment & Settlement**      | ❌                           | ❌                            | ✅ (x402 + ERC-8183)                       |
 | **Agent/Tool Discovery**      | ✅                           | ❌                            | ✅ (built-in discovery & registry)         |
-| **Protocol Compatibility**    | MCP only                    | A2A only                     | ✅ (MCP + gRPC compatible)                 |
+| **Protocol Compatibility**    | MCP only                    | A2A only                     | ✅ (extends A2A; wraps MCP tools)          |
 | **Decentralization**          | ❌                           | ❌                            | ✅ (Web3-native)                           |
 
 AIP is the first full-stack agent interoperability standard that bridges decentralized identity, memory, and messaging across agents and platforms.
@@ -56,11 +58,11 @@ AIP consists of **four modular layers**, enabling verifiable identity, real-time
 
 #### 🧱 Identity Layer
 
-Smart contracts manage agent registration and permission control, ensuring each agent has a unique and verifiable onchain identity.
+An ERC-8004 identity registry manages agent registration and permission control, ensuring each agent has a unique and verifiable onchain identity.
 
-#### 🔗 Communication Layer (AIP Runtime)
+#### 🔗 Communication & Settlement Layer (AIP Runtime)
 
-A lightweight, MCP + gRPC-compatible runtime that enables cross-agent communication, agent-tool function calls, and workflow coordination.
+An A2A-based runtime (JSON-RPC) for cross-platform agent communication and workflow coordination, with x402 / ERC-8183 payment and settlement. MCP tools can be wrapped as agent skills.
 
 #### 🧠 Memory Layer (Membase)
 
@@ -138,7 +140,7 @@ Governance will be progressively decentralized.
 
 ### 9. Developer Resources
 
-* 📦 SDK: [https://github.com/unibaseio/aip-agent](https://github.com/unibaseio/aip-agent)
+* 📦 SDKs: [aip-go-sdk](https://github.com/unibaseio/aip-go-sdk) (Go) · [unibase-aip-sdk](https://github.com/unibaseio/unibase-aip-sdk) (Python)
 * 📚 Docs: [https://openos-labs.gitbook.io/unibase-docs](https://openos-labs.gitbook.io/unibase-docs)
 * 🧪 Platform: [https://www.bitagent.io](https://www.bitagent.io/)
 * 🧪Explorer: [https://www.explorer.unibase.com](https://www.explorer.unibase.com/)
@@ -153,7 +155,8 @@ Governance will be progressively decentralized.
 | -------------------------------- | -------- | ---------- |
 | Agent Identity Registry          | Q4 2024  | ✅ Complete |
 | Membase + Unibase DA Integration | Q4 2024  | ✅ Complete |
-| MCP / gRPC Compatibility         | Q1 2025  | ✅ Complete |
+| Agent Communication Runtime      | Q1 2025  | ✅ Complete |
+| A2A + Payments (x402 / ERC-8183) | Q2 2026  | ✅ Complete |
 | Agent Discovery & Registry       | Q1 2025  | ✅ Complete |
 | AIP Governance                   | Q3 2025  | 🔜 Planned |
 | Cross-chain AIP Deployments      | Q1 2026  | 🔜 Planned |

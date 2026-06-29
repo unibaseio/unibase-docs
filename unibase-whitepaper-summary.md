@@ -37,7 +37,7 @@ Unibase aims to build the foundational infrastructure for the Open Agent Interne
 Unibase consists of three tightly integrated modules:
 
 * **Membase**: Decentralized memory layer for secure, scalable, long-term AI memory
-* **AIP Protocol**: Web3-native agent interoperability (MCP & gRPC compatible)
+* **AIP Protocol**: A2A-based agent interoperability with on-chain identity (ERC-8004) and payments (x402 / ERC-8183)
 * **Unibase DA**: High-throughput, zk-verified data availability for real-time AI access
 
 ***
@@ -58,7 +58,7 @@ Unibase consists of three core components:
 * Defines cross-agent message standards and behaviors
 * Enables inter-agent calls, shared memory access, and coordination
 * Supports agent identity and reputation layers
-* Web3-native design, compatible with MCP and gRPC for multi-agent coordination
+* Web3-native design built on A2A for multi-agent coordination, with ERC-8004 identity and x402 / ERC-8183 payments
 
 #### 4.3 Unibase DA (Data Availability Layer)
 

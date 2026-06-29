@@ -3,7 +3,7 @@
 ### Key Management
 
 * **Never commit** private keys, secret keys, or mnemonics to version control
-* Use **environment variables** for keys — `MEMBASE_PRIVATE_KEY` (Membase 2.0); `MEMBASE_SECRET_KEY` / `MEMBASE_ACCOUNT` (AIP / legacy 1.x); and similar
+* Use **environment variables** for keys — `MEMBASE_PRIVATE_KEY` (Membase 2.0); `MEMBASE_ACCOUNT` / `MEMBASE_SECRET_KEY` (AIP wallet; legacy Membase 1.x); and similar
 * Prefer **testnet** for development and experimentation
 
 ### Wallet Security
