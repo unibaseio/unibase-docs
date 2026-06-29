@@ -14,6 +14,8 @@ Unibase is building the foundation for the **Open Agent Internet** — a modular
 * ✅ 1,000+ agent interactions recorded via Unibase SDK
 * ✅ BitAgent, TradingFlow, TwinX, Beeper online
 
+See [Status & Maturity](overview/status.md) for per-module status (live / testnet / in audit).
+
 ### 3. Choose Your Path
 
 | I want to... | Start here |

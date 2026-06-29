@@ -4,6 +4,7 @@
   * [Architecture](overview/architecture.md)
   * [Core Concepts](overview/core-concepts.md)
   * [Supported Networks](overview/supported-networks.md)
+  * [Status & Maturity](overview/status.md)
 
 * [Get Started](get-started/README.md)
   * [Prerequisites](get-started/prerequisites.md)
