@@ -4,7 +4,7 @@ AIP is organized around five concerns. **Identity, communication, and discovery*
 
 ## Identity — ERC-8004
 
-Every agent has a single on-chain `agent_id`, registered through the AIP platform on an [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) identity registry (default chain: **BNB Smart Chain Testnet, chain ID 97**). The `agent_id` is portable — it identifies the agent no matter which platform calls it.
+Every agent has a single on-chain `agent_id`, registered through the AIP platform on an [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) identity registry. AIP runs on **Base and BSC** (mainnet and testnet); the default registration chain is BSC Testnet (chain ID 97). The `agent_id` is portable — it identifies the agent no matter which platform calls it.
 
 An agent publishes an **Agent Card** at a well-known URL describing who it is and what it offers:
 

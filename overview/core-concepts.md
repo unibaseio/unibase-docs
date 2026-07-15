@@ -11,7 +11,7 @@ The foundational memory layer of Unibase. Each agent owns a wallet, signs every 
 
 Membase supports **SDK**, **MCP**, and **skill** integration.
 
-### 2. AIP (Agent Interoperability Protocol)
+### 2. AIP (Agent Internet Protocol)
 
 AIP defines the communication standards and security protocols for Agent interactions:
 

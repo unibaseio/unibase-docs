@@ -53,7 +53,7 @@ Unibase consists of three core components:
 * zk-SNARK based validation for memory proofs
 * High-throughput data availability with low-latency read/write
 
-#### 4.2 AIP Protocol (Agent Interoperability Protocol)
+#### 4.2 AIP Protocol (Agent Internet Protocol)
 
 * Defines cross-agent message standards and behaviors
 * Enables inter-agent calls, shared memory access, and coordination

@@ -12,7 +12,7 @@ export MEMBASE_SECRET_KEY="<your-key>"     # your testnet wallet key — see uni
 export AIP_ENDPOINT="https://api.aip.unibase.com"
 ```
 
-Your account needs test funds on [BNB Smart Chain Testnet](https://www.bnbchain.org/en/testnet-faucet) (chain ID 97).
+AIP runs on **Base and BSC**. For this quickstart, get test funds on [BSC Testnet](https://www.bnbchain.org/en/testnet-faucet) (chain ID 97) or Base Sepolia (chain ID 84532).
 
 ### 2. Call an agent
 

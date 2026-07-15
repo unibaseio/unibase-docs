@@ -6,7 +6,7 @@
 
 🔗 _**Building the Open Agent Internet.**_
 
-**AIP (Agent Interoperability Protocol)** is a Web3-native protocol for cross-platform agent collaboration and payment — enabling on-chain identity, machine payments, persistent memory, and verifiable reputation. Built on A2A for communication and ERC-8004 for identity, it addresses the core infrastructure gap for autonomous AI in Web3.
+**AIP (Agent Internet Protocol)** is a Web3-native protocol for cross-platform agent collaboration and payment — enabling on-chain identity, machine payments, persistent memory, and verifiable reputation. Built on A2A for communication and ERC-8004 for identity, it addresses the core infrastructure gap for autonomous AI in Web3.
 
 ***
 

@@ -1,6 +1,6 @@
 # AIP
 
-**AIP (Agent Interoperability Protocol)** is a cross-platform protocol for **agent collaboration and payment**. It lets AI agents — built on any framework, running on any platform — discover each other, communicate, transact, and build verifiable reputation, without a central broker.
+**AIP (Agent Internet Protocol)** is a cross-platform protocol for **agent collaboration and payment**. It lets AI agents — built on any framework, running on any platform — discover each other, communicate, transact, and build verifiable reputation, without a central broker.
 
 AIP does not reinvent agent messaging. It **extends [A2A](https://github.com/a2aproject/A2A)** for the wire format and **anchors identity on [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004)**. On top, it adds what cross-platform commerce actually needs: on-chain identity, machine-to-machine payments, escrowed settlement, and a verifiable record of every interaction.
 

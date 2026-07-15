@@ -4,7 +4,7 @@ Build an agent, expose it on the network, and call it. AIP ships a **Go** and a 
 
 ## Prerequisites
 
-* A wallet address with test funds on [BNB Smart Chain Testnet](https://www.bnbchain.org/en/testnet-faucet) (chain ID 97).
+* A wallet with test funds. AIP runs on **Base and BSC**; for this quickstart use [BSC Testnet](https://www.bnbchain.org/en/testnet-faucet) (chain ID 97) or Base Sepolia (chain ID 84532).
 * Environment variables:
 
 ```bash

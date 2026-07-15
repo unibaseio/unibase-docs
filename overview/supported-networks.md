@@ -2,7 +2,7 @@
 
 > **Naming:** "BNB Chain" and "BSC" refer to the same network; we use **BNB Chain** in prose and **BSC + chain ID** in technical contexts.
 
-### Membase & AIP
+### Membase
 
 | Network | Chain ID | Status | Explorer |
 |---------|----------|--------|----------|
@@ -10,6 +10,17 @@
 | BNB Chain (BSC) Testnet | 97 | ✅ Live | [testnet.bscscan.com](https://testnet.bscscan.com/) |
 | opBNB Testnet | 5611 | ✅ Live | [opbnb-testnet.bscscan.com](https://opbnb-testnet.bscscan.com/) |
 | OP Sepolia | 11155420 | ✅ Live | [sepolia-optimistic.etherscan.io](https://sepolia-optimistic.etherscan.io/) |
+
+### AIP
+
+AIP runs on **Base and BSC** (mainnet and testnet). Default registration chain is BSC Testnet (97).
+
+| Network | Chain ID | Status | Explorer |
+|---------|----------|--------|----------|
+| BNB Chain (BSC) Mainnet | 56 | ✅ Live | [bscscan.com](https://bscscan.com/) |
+| BNB Chain (BSC) Testnet | 97 | ✅ Live | [testnet.bscscan.com](https://testnet.bscscan.com/) |
+| Base Mainnet | 8453 | ✅ Live | [basescan.org](https://basescan.org/) |
+| Base Sepolia | 84532 | ✅ Live | [sepolia.basescan.org](https://sepolia.basescan.org/) |
 
 ### Unibase Pay
 
