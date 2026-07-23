@@ -30,7 +30,7 @@ go build
 |---------|------------|
 | Base Sepolia (testnet) | `base-sepolia` |
 | Base Mainnet (roadmap) | `base` |
-| BSC (roadmap) | `bsc-mainnet` |
+| Ethereum Mainnet (roadmap) | `ethereum` |
 
 ### Next Steps
 

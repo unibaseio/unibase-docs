@@ -34,8 +34,10 @@ AIP runs on **Base and BSC** (mainnet and testnet). Default registration chain i
 | Network | Chain ID | Status | Notes |
 |---------|----------|--------|-------|
 | Base Sepolia | 84532 | ✅ Live (testnet) | Current DA deployment (`CHAIN_TYPE=base-sepolia`) |
-| Base Mainnet | 8453 | 🔄 In audit | ZK verification contracts (primary mainnet target) |
-| BSC Mainnet | 56 | 🗺️ Roadmap | ZK verification contracts |
+| Base Mainnet | 8453 | 🔄 In audit | ZK verification contracts (primary L2 target) |
+| Ethereum Mainnet | 1 | 🗺️ Roadmap | ZK verification contracts (security anchor / ERC-8004 legitimacy) |
+
+> DA anchors **Ethereum + Base only**. BSC is an application-layer chain (Pay/AIP); DA does **not** deploy on BSC.
 
 ### Getting Tokens
 

@@ -30,8 +30,10 @@ The decentralized **data availability + storage** layer for AI — availability 
 | Network | `CHAIN_TYPE` | Status |
 |---------|--------------|--------|
 | Base Sepolia | `base-sepolia` | ✅ Testnet |
-| Base Mainnet | `base` | 🛣 Roadmap |
-| BSC | `bsc-mainnet` | 🛣 Roadmap |
+| Base Mainnet | `base` | 🔍 In audit |
+| Ethereum Mainnet | `ethereum` | 🛣 Roadmap |
+
+> DA settles on **Ethereum and its L2 Base** — Base as the primary low-cost L2, Ethereum as the security anchor (availability inherits Ethereum's security, aligning with the ERC-8004 ecosystem). BSC is used by the application layer (Pay/AIP), **not** by DA.
 
 ### Next steps
 
