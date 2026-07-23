@@ -38,7 +38,7 @@ The decentralized **data availability + storage** layer for AI — availability 
 ### Next steps
 
 * [Architecture](components.md) — how it works, end to end
-* [Storage](unibase-storage.md) — the programmable storage layer
+* [Verifiable Storage](unibase-storage.md) — the positioning: sell verifiability, not gigabytes
 * [Quick Start](quick-start/README.md) — upload & download a file
 * [Nodes Bootstrap](quick-start/nodes-bootstrap/README.md) — run a Stream / Storage / Validator node
 * [Nodes Operations](quick-start/nodes-operations.md) — balances, revenue, withdrawals

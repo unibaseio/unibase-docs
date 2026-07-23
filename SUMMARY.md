@@ -37,7 +37,7 @@
 
 * [Unibase DA](unibase-da/README.md)
   * [Architecture](unibase-da/components.md)
-  * [Storage](unibase-da/unibase-storage.md)
+  * [Verifiable Storage](unibase-da/unibase-storage.md)
   * [Quick Start](unibase-da/quick-start/README.md)
   * [Nodes Bootstrap](unibase-da/quick-start/nodes-bootstrap/README.md)
     * [Storage Node](unibase-da/quick-start/nodes-bootstrap/storage-node.md)

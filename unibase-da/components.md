@@ -102,6 +102,6 @@ The network has no central orchestrator — all coordination is **on-chain state
 Unibase DA is the **verifiable storage substrate** beneath the stack:
 
 * **Membase** persists agent memory on DA for tamper-evident, on-chain-verifiable recall.
-* **Storage** ([next page](unibase-storage.md)) builds the programmable, assetizable storage layer on top.
+* **Verifiable Storage** ([next page](unibase-storage.md)) — the positioning: verifiability as a programmable primitive, an overlay over any storage backend, not a byte-owner.
 
 > A high-throughput DA layer where availability is a **provable on-chain fact**, not a committee's promise.

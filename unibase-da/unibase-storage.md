@@ -1,72 +1,88 @@
-# Storage
+# Verifiable Storage
 
-The **AI Native Storage Layer** is purpose-built to meet the intensive storage demands of AI agents and models in a decentralized environment. Traditional Web3 storage systems fall short when it comes to high-throughput, large-scale, programmable, and value-driven AI data workflows. Unibase Storage solves this with a robust, scalable, and intelligent storage layer.
+AI doesn't lack storage — S3 and its peers are effectively infinite and cheap. What AI
+*does* lack is **verifiable, ownable, composable memory**: data an agent (or a smart
+contract) can prove is **untampered, available, and provenance-auditable**, and then
+**act on directly on-chain**.
 
-***
-
-### 💡 Why It Matters
-
-AI services require real-time access to massive amounts of data. Whether it’s context windows, model parameters, or long-term memory, delays in storage or retrieval significantly hinder AI performance. The AI Native Storage Layer is optimized for this reality.
-
-***
-
-### 🔑 Core Capabilities
-
-#### ⚡ 1. High-Performance Data Access
-
-* Optimized for AI inference and training workloads.
-* Supports **low-latency** and **high-throughput** data read/write (up to **100GB/s**).
-* Seamlessly connects to Unibase DA for verifiable, on-chain-accessible storage operations.
-
-> Perfect for AI Agents requiring real-time context loading and memory updates.
+Unibase DA turns that into a **programmable primitive**. It is not another place to dump
+bytes; it is the layer that makes bytes **provable**.
 
 ***
 
-#### ♾️ 2. Massive Scalability & Private Pools
+### 💡 The shift: sell verifiability, not gigabytes
 
-* Handles **exabyte-scale (EB+)** data volumes.
-* Horizontally scalable to **millions of storage nodes**.
-* Supports **private storage pools** for dedicated applications or enterprise use.
+| | Commodity storage (S3 / Filecoin / Arweave) | **Unibase DA** |
+|---|---|---|
+| Sells | Bytes ($/GB) | **A proof primitive** (untampered · available · auditable) |
+| Trust | Provider / off-chain committee | **On-chain ZK fraud proofs + Honest-One** |
+| On-chain | Not composable (or costly) | **Availability is a first-class on-chain fact** |
+| Competes on | Price per GB | **Verifiability, not price** |
 
-> Offers flexibility for both public decentralized networks and custom enterprise deployments.
-
-***
-
-#### ⚙️ 3. Programmability & Ownership Control
-
-* Fully programmable via smart contracts.
-* Customizable **access control**, **lifecycle rules**, and **data governance**.
-* Allows users or apps to define storage logic (e.g. auto-expiry, pricing, access triggers).
-
-> Empowers developers with fine-grained data logic tailored to AI workflows.
+We do **not** compete on $/GB. Availability and correct encoding are enforced by an
+optimistic **on-chain ZK fraud-proof** game under an **Honest-One** model — a single
+honest participant forces correctness, with no honest-majority or committee assumption.
 
 ***
 
-#### 💰 4. Native Data Assetization
+### 🧱 A verifiability *overlay*, not a byte-owner
 
-* Treats stored data as **on-chain assets**.
-* Enables **tokenization, trading, and monetization** of data.
-* Compatible with DeFi, marketplace, and compute-to-data paradigms.
+Unibase DA can sit **on top of existing storage backends** (its buffer tier is pluggable —
+local, S3-compatible object stores, and other decentralized storage over time) and add
+only the part they can't: a **cheap, composable, on-chain proof of availability and
+encoding**. You keep your storage economics; DA adds trust.
 
-> Transforms data from passive storage into active economic value.
+> Arweave/Filecoin can persist a blob, but their proofs don't cheaply live on-chain or
+> compose with contracts. That composability is Unibase DA's structural advantage.
 
 ***
 
-### 🧩 Architecture Highlights
+### 🔑 What you can build on it
 
-* Built atop **Unibase DA** for tamper-proof DA + storage validation.
-* Compatible with **zk verification**, smart contract hooks, and programmable storage lifecycle.
-* Designed to work with **Membase** and **AIP** for seamless AI agent memory management.
+* **Verifiable agent memory** — tamper-evident, on-chain-verifiable recall for AI agents.
+  This is the wedge, delivered through **[Membase](../membase/README.md)** (memory SDK/MCP built on DA).
+* **Proof-of-Availability for on-chain reputation** — a data-availability layer for the
+  **ERC-8004** agent-reputation/identity ecosystem (evidence that a claim's backing data
+  is actually retrievable).
+* **Verifiable datasets & model registries** — prove a dataset/model without revealing it
+  (commitment proofs), enabling **training provenance** and **data royalties**.
+* **DA for AI artifacts** — weights, LoRA adapters, RAG corpora, and checkpoints with a
+  portable, verifiable availability guarantee.
+
+***
+
+### ⚙️ Developer experience
+
+* **Feels familiar** — the SDK is shaped like an object store / vector store, so it drops
+  into AI stacks (LangChain / LlamaIndex / MCP) without learning a new storage model.
+* **Proofs are first-class** — every object carries a self-verifying, content-addressed
+  name; a client (or contract) can check the on-chain receipt, and availability can be
+  surfaced as a shareable **verify link / ✓verified badge** in the explorer.
+* **Composable** — because proofs live on-chain, contracts can gate logic on "is this data
+  provably available?" — access control, lifecycle, pricing, and royalty flows become
+  programmable around verified data.
+* **Performant** — erasure-coded durability with high-throughput ingest, so real-time
+  context loading and memory updates aren't bottlenecked.
+
+***
+
+### 🤝 Honest about trust
+
+Verifiability should anchor to real needs — agent marketplaces, portable/ownable memory,
+on-chain reputation, regulated AI, data royalties — not decentralization theater. Unibase
+DA states plainly where trust lands: on the **Honest-One fraud-proof game** and the
+**security of the settlement chain** (Base, with Ethereum as the security anchor), **not**
+on a trusted committee.
 
 ***
 
 ### 📌 Summary
 
-Unibase's AI Native Storage Layer enables decentralized AI applications to scale intelligently with:
+Unibase DA is the **verifiability layer for AI memory and data**:
 
-* ✅ Real-time, high-speed data access
-* ✅ Massive and elastic storage capacity
-* ✅ Programmable ownership and access logic
-* ✅ Monetizable, verifiable data assets
+* ✅ Proofs of untampered, available, auditable data — enforced on-chain (ZK + Honest-One)
+* ✅ An **overlay** over any storage backend — trust added, not bytes owned
+* ✅ Composable: availability is a first-class on-chain fact contracts can consume
+* ✅ Powers verifiable agent memory (Membase), 8004 availability, dataset/model provenance, and AI-artifact DA
 
-> **It’s not just storage — it’s intelligent, sovereign memory infrastructure for Web3 AI.**
+> The goal isn't cheaper storage — it's **memory you can prove, own, and compose**.
