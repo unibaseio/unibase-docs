@@ -11,6 +11,7 @@ What you can rely on today, per module. For chain IDs and explorers see [Support
 | **Unibase Pay** | 🟢 Live | BSC mainnet + testnet | HTTP API (x402) | `api.x402.unibase.com/v2`. EIP-3009 / Permit2 gasless transfers. |
 | **Unibase DA** | 🧪 Testnet / 🔍 In audit | Base Sepolia (testnet) | Go SDK + Hub | Base mainnet ZK contracts in audit; Ethereum on roadmap. DA anchors Ethereum + Base only (not BSC). Do not rely on testnet data persistence. |
 | **Unibase Memory** | 🟢 Live | — (client app) | Chrome extension | Consumer product on the Chrome Web Store; syncs to Membase. |
+| **Governance** | 🧪 Testnet | Ethereum (dev deployment) + Base Sepolia (staking) | Snapshot, `cast` / Governor contracts | Snapshot signaling live; Tally front-end pending. Deployer still holds Timelock admin and no Guardian is seated — not production governance yet. |
 
 ### Stability notes
 
