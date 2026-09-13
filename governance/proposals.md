@@ -2,6 +2,8 @@
 
 How a change goes from an idea to live protocol state. The binding path runs on **OpenZeppelin Governor + TimelockController**, with vUB as the voting token.
 
+> This page covers the **on-chain** half — the rules the contracts enforce. The forum and Snapshot phases that should precede a binding vote are in [Governance Process](process.md).
+
 ***
 
 ### Governor parameters
@@ -75,6 +77,38 @@ cast send $VUB "delegate(address)" $(cast wallet address $PRIVATE_KEY) \
 | *any UUPS proxy* | `upgradeToAndCall(address,bytes)` | Contract upgrades |
 
 Some parameters are bound to each other by on-chain invariants that hold **regardless of who calls the setter** — e.g. `Node.delay ≥ EProof.challengeWindow`, so a node can never withdraw its stake before its proofs stop being challengeable. A proposal that would break an invariant reverts on execution.
+
+***
+
+### Simulate before you propose
+
+A proposal takes ~10 days to reach execution. If the calldata reverts, you find out at the *end* of that — after the review, the vote, and the timelock. Simulate first.
+
+The Timelock is the account that will make the call, so impersonate it and run the exact calldata you're about to propose:
+
+```bash
+# Fork mainnet locally
+anvil --fork-url $RPC &
+
+TIMELOCK="0xbD721b1509D7574EE59e252a01111EBb35893A9d"
+cast rpc anvil_impersonateAccount $TIMELOCK --rpc-url http://localhost:8545
+cast rpc anvil_setBalance $TIMELOCK 0xde0b6b3a7640000 --rpc-url http://localhost:8545
+
+# Dry-run the call as the Timelock — reverts here, reverts on execution
+cast call $TARGET $CALLDATA --from $TIMELOCK --rpc-url http://localhost:8545
+
+# Then actually send it on the fork and read the result back
+cast send $TARGET $CALLDATA --from $TIMELOCK --unlocked --rpc-url http://localhost:8545
+cast call $TARGET "slots()(uint64)" --rpc-url http://localhost:8545
+```
+
+Worth checking specifically:
+
+* **Invariant reverts** — e.g. lowering `Node.delay` below `EProof.challengeWindow` reverts. The bound is enforced on execution, not at proposal time.
+* **Role errors** — if the call reverts for the Timelock, `GOVERNOR_ROLE` isn't wired the way you assumed.
+* **Upgrades** — simulate `upgradeToAndCall` and then call a function on the new implementation. A storage-layout mistake shows up as corrupted reads, not as a revert.
+
+> Cross-chain proposals (ETH → Base) cannot be simulated end to end on a single fork. Simulate the Base-side call against a Base fork with `L2GovernanceExecutor` impersonated, then verify the L1 message encoding separately.
 
 ***
 
@@ -180,5 +214,6 @@ Everything else — upgrades, treasury, role grants, changing the committee itse
 
 ### Next steps
 
+* [Governance Process](process.md) — the off-chain phases that come first
 * [Governance overview](README.md) — venues, safety rails, deployments
 * [Staking & vUB](staking.md) — get the voting power first

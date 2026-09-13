@@ -49,6 +49,7 @@
 
 * [Governance](governance/README.md)
   * [Staking & vUB](governance/staking.md)
+  * [Governance Process](governance/process.md)
   * [Proposals & Execution](governance/proposals.md)
 
 * [Unibase Memory](unibase-memory/README.md)

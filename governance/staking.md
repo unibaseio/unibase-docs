@@ -81,6 +81,36 @@ Staking APY is paid in a separate community-incentive token (which may be UB its
 
 ***
 
+### Delegating your vote
+
+vUB cannot be transferred — but the **voting power** it carries can be delegated, and delegating is not the same as giving anything away:
+
+| Delegating **does** | Delegating does **not** |
+|---|---|
+| Move who casts the vote | Move your UB or vUB |
+| Stay revocable at any time, instantly | Affect your lock, cooldown, or rewards |
+| Let you stay passive without your weight going to waste | Give the delegate any claim on your funds |
+
+Your **first** stake self-delegates automatically, so a holder who wants to vote personally needs to do nothing. To hand your weight to someone else — or to take it back:
+
+```bash
+# Delegate to a representative
+cast send $VUB "delegate(address)" $DELEGATE --rpc-url $RPC --private-key $PRIVATE_KEY
+
+# Take it back
+cast send $VUB "delegate(address)" $(cast wallet address $PRIVATE_KEY) \
+  --rpc-url $RPC --private-key $PRIVATE_KEY
+
+# Who am I currently delegating to?
+cast call $VUB "delegates(address)(address)" $(cast wallet address $PRIVATE_KEY) --rpc-url $RPC
+```
+
+**Timing matters.** The Governor snapshots voting weight once, at the end of the voting delay. Delegating after that snapshot has no effect on proposals already in flight — it applies to the next one. Delegate before you need to, not when a vote is already open.
+
+> An undelegated balance votes with **nobody**. If you delegated away years ago and forgot, your stake is still earning rewards while someone else casts its vote — check `delegates(you)`.
+
+***
+
 ### Function reference
 
 | Function | Access | Notes |
@@ -137,5 +167,6 @@ cast send $VUB "withdraw()" --rpc-url $RPC --private-key $PRIVATE_KEY
 
 ### Next steps
 
+* [Governance Process](process.md) — how a change gets proposed and ratified
 * [Proposals & Execution](proposals.md) — put your vUB to work
 * [Governance overview](README.md) — venues, safety rails, deployments

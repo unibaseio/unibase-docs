@@ -6,6 +6,35 @@ The path is deliberately boring: **lock UB → get vUB voting power → signal o
 
 ***
 
+### If you hold UB, here's the short version
+
+**What do I actually get?** Lock UB and you get vUB — voting weight plus a share of staking rewards. Lock longer, get more of both (up to 2.5×).
+
+**Do I have to vote on everything?** No. You can **delegate** your weight to someone who follows governance closely, and take it back whenever you like. Delegating doesn't move or risk your UB — it only moves the vote.
+
+**What am I voting on?** Real protocol settings: how much a storage node must bond, how hard it gets slashed for failing a proof, how long an epoch is, and whether a contract gets upgraded. Not slogans.
+
+**What's the catch?** Your UB is locked for the duration you chose, and leaving takes two steps — your voting power dies immediately on exit, then your UB unbonds for a cooldown before you can withdraw. That's deliberate: it's what stops someone from borrowing a vote and walking away.
+
+***
+
+### Scope: what governance controls
+
+**In scope:**
+
+* **DA protocol parameters** — node minimum stake, slashing penalties, proof timing, challenge windows, epoch length
+* **Staking economics** — lock durations, the boost curve, the cooldown, the reward asset
+* **Contract upgrades** — any UUPS implementation behind the protocol proxies
+* **Roles and the safety apparatus** — who holds `GOVERNOR_ROLE`, who sits on the Guardian council, whether the `ParamCommittee` fast lane exists at all
+
+**Not in scope:**
+
+* **Your data.** Governance cannot read, move, or delete anything stored on Unibase DA, and cannot touch keys or encrypted memory.
+* **Individual balances.** There is no function to mint, seize, or freeze a specific holder's UB or vUB.
+* **Application-layer products.** Membase, AIP, and Unibase Pay are not governed by this system today.
+
+***
+
 ### Voting power comes from a lock, not a balance
 
 Voting power is **vUB** (vote-escrowed UB), minted by locking UB in the [`VUB`](staking.md) contract.
@@ -53,6 +82,21 @@ Unibase DA settles on **Base**, but governance authority lives on **Ethereum**. 
 
 ***
 
+### Two governing bodies
+
+Governance is split between a **body that decides** and a **body that can stop things** — and the second one answers to the first.
+
+| Body | Who | Powers | Accountability |
+|---|---|---|---|
+| **vUB holders** | Anyone who locks UB, plus the delegates they choose | Propose, vote, and execute every change in scope above | Sovereign — the DAO is the root authority |
+| **Guardian council** | A security-council multisig | Veto a queued proposal (`CANCELLER_ROLE`) and trip the emergency circuit breaker | **Powers are delegated by the DAO and revocable by it.** Governance administers `GUARDIAN_ROLE`, so a vote can rotate or remove the council outright |
+
+The Guardian can only ever *subtract*: cancel a queued proposal, or pause fund-moving entrypoints. It cannot propose, pass, or execute anything, cannot upgrade a contract, and cannot move funds. A Guardian that acts in bad faith can be dissolved by the holders it was supposed to protect.
+
+> No Guardian council is seated on the current deployment — see the deployment notice below.
+
+***
+
 ### Safety rails
 
 Governance is fast enough to be useful and slow enough to be safe. Four independent mechanisms:
@@ -94,8 +138,23 @@ Governance contracts on **Ethereum mainnet**:
 
 ***
 
+### How to participate
+
+Pick the level of involvement you actually have time for:
+
+| I want to... | Do this |
+|---|---|
+| **Earn and stay passive** | Lock UB for rewards, then [delegate](staking.md#delegating-your-vote) your weight to someone who follows governance. Your vote still counts; you don't have to show up |
+| **Vote myself** | Lock UB (your first stake self-delegates), then vote on [Snapshot](https://snapshot.box/#/s:unibase.eth) — gasless — or on-chain for binding proposals |
+| **Vote on others' behalf** | Build a track record in the forum and on Snapshot, and ask holders to delegate to you. Delegated weight is revocable at any time, so it has to be re-earned continuously |
+| **Change something** | Start an RFC — see [Governance Process](process.md). Below the 2.5M vUB proposal threshold, partner with a delegate who clears it |
+| **Just watch** | Every queued proposal sits in the Timelock for 2 days before it can execute. Read the calldata; anyone can raise an alarm |
+
+***
+
 ### Next steps
 
-* [Staking & vUB](staking.md) — lock UB, pick a duration, claim rewards, unstake
+* [Staking & vUB](staking.md) — lock UB, pick a duration, delegate, claim rewards, unstake
+* [Governance Process](process.md) — RFC → Temperature Check → on-chain vote *(draft)*
 * [Proposals & Execution](proposals.md) — proposal lifecycle, governed parameters, `cast` recipes
 * [Unibase DA Architecture](../unibase-da/components.md) — what these parameters actually control
