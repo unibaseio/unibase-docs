@@ -1,36 +1,127 @@
 # API Reference
 
+The Unibase Pay facilitator implements the [x402](https://x402.org) verify/settle
+interface. A resource server declares a price, the client signs a payment
+payload, and the facilitator checks it and settles it on-chain.
+
 ### Base URL
 
-* **V2 (recommended):** `https://api.x402.unibase.com/v2`
-* **V1:** `https://api.x402.unibase.com/v1`
+```
+https://api.x402.unibase.com/v2
+```
 
-### Supported Networks
+The bare base URL returns 404 — it is a prefix you append an endpoint to.
 
-* BSC mainnet
-* BSC testnet
+> **V1 is no longer served.** `https://api.x402.unibase.com/v1` returns 404 on
+> every path. Migrate to V2; the `exact` scheme behaves the same.
 
 ### Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/verify` | Verify payment |
-| POST | `/verify` | Verify payment |
-| GET | `/settle` | Settle payment |
-| POST | `/settle` | Settle payment |
-| GET | `/health` | Health check |
-| GET | `/supported` | Supported networks and schemes |
+| POST | `/verify` | Check a payment payload without settling it |
+| POST | `/settle` | Settle a payment on-chain |
+| GET | `/supported` | Scheme and network pairs this facilitator serves |
+
+`/verify` and `/settle` are POST only — a GET returns 405. There is no
+`/health` endpoint; use `GET /supported` as a liveness probe.
+
+### GET /supported
+
+Returns every scheme/network pair the facilitator accepts. This is the
+authoritative list — prefer reading it at runtime over hardcoding the table
+below.
+
+```bash
+curl https://api.x402.unibase.com/v2/supported
+```
+
+```json
+{
+  "kinds": [
+    { "x402Version": 2, "scheme": "exact", "network": "eip155:56" },
+    {
+      "x402Version": 2,
+      "scheme": "upto",
+      "network": "eip155:56",
+      "extra": { "facilitatorAddress": "0x2cFf062a030f148853aA1c8c12d680B9860Ef041" }
+    },
+    { "x402Version": 2, "scheme": "batch-settlement", "network": "eip155:56" }
+  ]
+}
+```
+
+Networks use [CAIP-2](https://chainagnostic.org/CAIPs/caip-2) identifiers
+(`eip155:<chainId>`).
+
+### POST /verify and POST /settle
+
+Both take the same envelope:
+
+```json
+{
+  "paymentPayload": {
+    "x402Version": 2,
+    "scheme": "exact",
+    "network": "eip155:56",
+    "payload": { }
+  },
+  "paymentRequirements": {
+    "scheme": "exact",
+    "network": "eip155:56",
+    "asset": "0x…",
+    "payTo": "0x…",
+    "maxAmountRequired": "1000000",
+    "resource": "https://api.example.com/report",
+    "maxTimeoutSeconds": 60
+  }
+}
+```
+
+Note that `x402Version` belongs **inside** `paymentPayload`; a top-level
+`x402Version` is ignored and the request fails version detection. The
+facilitator routes on the `scheme` and `network` pair, so both must appear in
+`GET /supported`. See [x402.org](https://x402.org) for the payload field
+specification.
+
+Errors come back as `{"error": "<code>: <detail>"}` with HTTP 400. The detail is
+specific enough to debug against — an unroutable pair, for example, lists every
+registered `scheme@network`.
+
+### Supported Networks
+
+All six networks expose all three schemes.
+
+| Network | CAIP-2 | Chain ID |
+|---------|--------|----------|
+| BNB Smart Chain | `eip155:56` | 56 |
+| BSC Testnet | `eip155:97` | 97 |
+| Base | `eip155:8453` | 8453 |
+| Base Sepolia | `eip155:84532` | 84532 |
+| Polygon | `eip155:137` | 137 |
+| Arbitrum One | `eip155:42161` | 42161 |
 
 ### Payment Schemes
 
-* **exact** — Supported on both V1 and V2
+| Scheme | Since | What it does |
+|--------|-------|--------------|
+| `exact` | V1 | Charge a fixed, known amount. The server declares a price, the client signs for exactly that amount. |
+| `upto` | V2 | Authorize a ceiling, settle actual usage. For metered billing — per-token LLM calls, per-second compute — where the final price is unknown when the request starts. |
+| `batch-settlement` | V2 | Aggregate many micropayments into one on-chain transaction. Gas is paid once instead of per call, which is what makes sub-cent agent-to-agent payments economical. |
 
-### Supported Assets (V2)
+The `upto` scheme advertises the facilitator address that holds the
+authorization in `extra.facilitatorAddress`:
 
-* All ERC20 tokens via Permit2
-* EIP-3009 assets
+```
+0x2cFf062a030f148853aA1c8c12d680B9860Ef041
+```
 
-### Permit2 Proxy (BNB Chain)
+### Assets
+
+* ERC-20 tokens via Permit2
+* EIP-3009 assets (gasless `transferWithAuthorization`)
+
+Permit2 proxy on BNB Smart Chain:
 
 ```
 0x98D0E9d6DC5BCd6FBB75b49dCd0204E966732392

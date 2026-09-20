@@ -1,12 +1,12 @@
 # Unibase Pay
 
-x402 payment facilitator on BNB Chain — agents discover, pay, and access resources autonomously. **Verify** and **settle** payments via API; **Privy** for agent custodial wallets.
+x402 payment facilitator for agent commerce — agents discover, pay, and access resources autonomously. **Verify** and **settle** payments via API; **Privy** for agent custodial wallets. Launched on BNB Chain and now serving six EVM networks.
 
 ### 30-Second Example
 
 ```bash
-curl "https://api.x402.unibase.com/v2/health"
-# Supported: GET /verify, POST /verify, GET /settle, POST /settle, GET /supported
+curl https://api.x402.unibase.com/v2/supported
+# Endpoints: POST /verify, POST /settle, GET /supported
 ```
 
 ### Why Unibase Pay
@@ -16,7 +16,8 @@ curl "https://api.x402.unibase.com/v2/health"
 | **x402 V2** | Verify, settle, monitor; payment gating; micropayments |
 | **Permit2 + EIP-3009** | All ERC20 tokens; gasless transfers |
 | **Privy Wallet** | Agent custodial wallet — MCP/Skill ready, no user wallet |
-| **BNB Chain** | Low gas, high throughput for agent commerce |
+| **Six EVM networks** | BNB Smart Chain, Base, Polygon, Arbitrum One + BSC and Base testnets |
+| **Three schemes** | `exact` fixed amounts, `upto` metered billing, `batch-settlement` aggregated micropayments |
 
 ### Flow
 

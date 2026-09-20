@@ -10,27 +10,46 @@ https://api.x402.unibase.com/v2
 
 ### 2. Supported Networks
 
-* BSC mainnet
-* BSC testnet
+| Network | CAIP-2 |
+|---------|--------|
+| BNB Smart Chain | `eip155:56` |
+| BSC Testnet | `eip155:97` |
+| Base | `eip155:8453` |
+| Base Sepolia | `eip155:84532` |
+| Polygon | `eip155:137` |
+| Arbitrum One | `eip155:42161` |
 
-### 3. Quick Verify (cURL)
+### 3. First call
+
+`GET /supported` needs no auth and no payload, so it is both the liveness check
+and the source of truth for what the facilitator accepts. There is no `/health`
+endpoint.
 
 ```bash
-curl "https://api.x402.unibase.com/v2/health"
+curl https://api.x402.unibase.com/v2/supported
 ```
 
-### 4. Key Endpoints
+### 4. Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET/POST | `/verify` | Verify payment |
-| GET/POST | `/settle` | Settle payment |
-| GET | `/health` | Health check |
-| GET | `/supported` | Supported networks and schemes |
+| POST | `/verify` | Check a payment payload without settling it |
+| POST | `/settle` | Settle a payment on-chain |
+| GET | `/supported` | Scheme and network pairs served |
 
-### 5. Protocol Reference
+`/verify` and `/settle` are POST only — a GET returns 405.
 
-See [x402.org](https://x402.org) for the full protocol specification. Servers declare payment requirements; clients send signed payloads; facilitators verify and settle on-chain.
+### 5. Payment Schemes
+
+* `exact` — fixed, known amount
+* `upto` — authorize a ceiling, settle actual usage (metered billing)
+* `batch-settlement` — many micropayments in one on-chain transaction
+
+### 6. Protocol Reference
+
+See [x402.org](https://x402.org) for the full protocol specification. Servers
+declare payment requirements; clients send signed payloads; facilitators verify
+and settle on-chain.
 
 ---
 

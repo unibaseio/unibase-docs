@@ -26,8 +26,15 @@ AIP runs on **Base and BSC** (mainnet and testnet). Default registration chain i
 
 | Network | Chain ID | Status | API |
 |---------|----------|--------|-----|
-| BSC Mainnet | 56 | ✅ Live | [api.x402.unibase.com/v2](https://api.x402.unibase.com/v2) |
+| BNB Smart Chain | 56 | ✅ Live | [api.x402.unibase.com/v2](https://api.x402.unibase.com/v2) |
 | BSC Testnet | 97 | ✅ Live | [api.x402.unibase.com/v2](https://api.x402.unibase.com/v2) |
+| Base | 8453 | ✅ Live | [api.x402.unibase.com/v2](https://api.x402.unibase.com/v2) |
+| Base Sepolia | 84532 | ✅ Live | [api.x402.unibase.com/v2](https://api.x402.unibase.com/v2) |
+| Polygon | 137 | ✅ Live | [api.x402.unibase.com/v2](https://api.x402.unibase.com/v2) |
+| Arbitrum One | 42161 | ✅ Live | [api.x402.unibase.com/v2](https://api.x402.unibase.com/v2) |
+
+One endpoint serves all six; the network is selected per request via its
+CAIP-2 id (`eip155:<chainId>`). `GET /v2/supported` is the authoritative list.
 
 ### Unibase DA
 
