@@ -11,17 +11,17 @@ Where the programmable surface of each module lives. Most integration is through
 
 ### Unibase Pay (x402)
 
-| Base URL | Version |
-|----------|---------|
-| `https://api.x402.unibase.com/v2` | V2 (recommended) |
-| `https://api.x402.unibase.com/v1` | V1 |
+Base URL: `https://api.x402.unibase.com/v2`. V1 is no longer served — every
+path under `/v1` returns 404.
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET · POST | `/verify` | Verify payment |
-| GET · POST | `/settle` | Settle payment |
-| GET | `/health` | Health check |
-| GET | `/supported` | Supported networks and schemes |
+| POST | `/verify` | Check a payment payload without settling it |
+| POST | `/settle` | Settle a payment on-chain |
+| GET | `/supported` | Scheme and network pairs served |
+
+`/verify` and `/settle` are POST only. There is no `/health` endpoint — use
+`GET /supported` as a liveness probe.
 
 See the [Unibase Pay API Reference](../unibase-pay/api-reference.md) for request/response details.
 
