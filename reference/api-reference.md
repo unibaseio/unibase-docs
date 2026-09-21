@@ -19,9 +19,10 @@ path under `/v1` returns 404.
 | POST | `/verify` | Check a payment payload without settling it |
 | POST | `/settle` | Settle a payment on-chain |
 | GET | `/supported` | Scheme and network pairs served |
+| GET | `/health` | Liveness probe |
+| GET | `/stats` | Settled tx count and volume per network and asset |
 
-`/verify` and `/settle` are POST only. There is no `/health` endpoint — use
-`GET /supported` as a liveness probe.
+`/verify` and `/settle` are POST only.
 
 See the [Unibase Pay API Reference](../unibase-pay/api-reference.md) for request/response details.
 

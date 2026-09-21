@@ -22,9 +22,10 @@ The bare base URL returns 404 — it is a prefix you append an endpoint to.
 | POST | `/verify` | Check a payment payload without settling it |
 | POST | `/settle` | Settle a payment on-chain |
 | GET | `/supported` | Scheme and network pairs this facilitator serves |
+| GET | `/health` | Liveness probe — `{"status":"ok"}` |
+| GET | `/stats` | Settled tx count and volume per network and asset |
 
-`/verify` and `/settle` are POST only — a GET returns 405. There is no
-`/health` endpoint; use `GET /supported` as a liveness probe.
+`/verify` and `/settle` are POST only — a GET returns 405.
 
 ### GET /supported
 
@@ -79,14 +80,44 @@ Both take the same envelope:
 ```
 
 Note that `x402Version` belongs **inside** `paymentPayload`; a top-level
-`x402Version` is ignored and the request fails version detection. The
-facilitator routes on the `scheme` and `network` pair, so both must appear in
-`GET /supported`. See [x402.org](https://x402.org) for the payload field
-specification.
+`x402Version` is ignored and the request fails version detection (the error
+says so explicitly). The facilitator routes on the `scheme` and `network` pair,
+so both must appear in `GET /supported`. See [x402.org](https://x402.org) for
+the payload field specification.
 
 Errors come back as `{"error": "<code>: <detail>"}` with HTTP 400. The detail is
 specific enough to debug against — an unroutable pair, for example, lists every
 registered `scheme@network`.
+
+### GET /stats
+
+Settlement totals, keyed by network and then by asset contract address
+(lowercased). Amounts are base units as decimal strings — divide by `decimals`
+to display.
+
+```bash
+curl https://api.x402.unibase.com/v2/stats
+```
+
+```json
+{
+  "networks": {
+    "eip155:56": {
+      "0x55d398326f99059ff775485246999027b3197955": {
+        "symbol": "USDT",
+        "decimals": 18,
+        "txCount": 42,
+        "totalAmount": "1250000000000000000"
+      }
+    }
+  }
+}
+```
+
+Counts only settlements this facilitator submitted on-chain — it is Unibase Pay
+volume, not all x402 volume. `/verify` calls are not counted, and a settlement
+of zero still increments `txCount`. `symbol` falls back to the asset address if
+the token's `symbol()` could not be read.
 
 ### Supported Networks
 

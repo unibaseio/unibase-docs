@@ -21,13 +21,13 @@ https://api.x402.unibase.com/v2
 
 ### 3. First call
 
-`GET /supported` needs no auth and no payload, so it is both the liveness check
-and the source of truth for what the facilitator accepts. There is no `/health`
-endpoint.
-
 ```bash
-curl https://api.x402.unibase.com/v2/supported
+curl https://api.x402.unibase.com/v2/health
+# {"status":"ok"}
 ```
+
+`GET /supported` needs no auth either and is the source of truth for what the
+facilitator accepts.
 
 ### 4. Endpoints
 
@@ -36,6 +36,8 @@ curl https://api.x402.unibase.com/v2/supported
 | POST | `/verify` | Check a payment payload without settling it |
 | POST | `/settle` | Settle a payment on-chain |
 | GET | `/supported` | Scheme and network pairs served |
+| GET | `/health` | Liveness probe |
+| GET | `/stats` | Settled tx count and volume per network and asset |
 
 `/verify` and `/settle` are POST only — a GET returns 405.
 

@@ -8,12 +8,13 @@ https://api.x402.unibase.com/v2
 
 ### 2. Check the facilitator is up
 
-There is no `/health` endpoint. `GET /supported` doubles as a liveness probe and
-tells you what the facilitator currently accepts:
-
 ```bash
-curl https://api.x402.unibase.com/v2/supported
+curl https://api.x402.unibase.com/v2/health
+# {"status":"ok"}
 ```
+
+`GET /supported` is the heavier call that tells you what the facilitator
+currently accepts.
 
 ### 3. Endpoints
 
@@ -22,6 +23,8 @@ curl https://api.x402.unibase.com/v2/supported
 | POST | `/verify` | Check a payment payload without settling it |
 | POST | `/settle` | Settle a payment on-chain |
 | GET | `/supported` | Scheme and network pairs served |
+| GET | `/health` | Liveness probe |
+| GET | `/stats` | Settled tx count and volume per network and asset |
 
 `/verify` and `/settle` are POST only.
 

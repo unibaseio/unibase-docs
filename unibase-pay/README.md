@@ -5,8 +5,8 @@ x402 payment facilitator for agent commerce — agents discover, pay, and access
 ### 30-Second Example
 
 ```bash
-curl https://api.x402.unibase.com/v2/supported
-# Endpoints: POST /verify, POST /settle, GET /supported
+curl https://api.x402.unibase.com/v2/health
+# Endpoints: POST /verify, POST /settle, GET /supported, GET /health, GET /stats
 ```
 
 ### Why Unibase Pay
