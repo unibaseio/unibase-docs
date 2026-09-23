@@ -47,6 +47,11 @@
     * [Docker](unibase-da/quick-start/nodes-bootstrap/docker.md)
   * [Nodes operations](unibase-da/quick-start/nodes-operations.md)
 
+* [Governance](governance/README.md)
+  * [Staking & vUB](governance/staking.md)
+  * [Governance Process](governance/process.md)
+  * [Proposals & Execution](governance/proposals.md)
+
 * [Unibase Memory](unibase-memory/README.md)
   * [Getting Started](unibase-memory/getting-started.md)
   * [Features](unibase-memory/features.md)
