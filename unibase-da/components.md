@@ -93,7 +93,7 @@ The network has no central orchestrator — all coordination is **on-chain state
 * Storage nodes **stake** the protocol token; misbehavior proven on-chain is **slashed**.
 * Honest work earns **per-epoch storage rewards** and **streaming fees**; challengers earn a share of slashed stake.
 * Settlement runs on **Base** (primary L2) and **Ethereum** (security anchor); availability inherits the settlement chain's security. DA does **not** run on BSC — that's the application layer (Pay/AIP).
-* Governance & the token economy (staking → vote-escrowed **vUB**, slashing/reward params) are set by the DA protocol's on-chain governance (Timelock + guardian), progressively decentralized.
+* Governance & the token economy (staking → vote-escrowed **vUB**, slashing/reward params) are set by the DA protocol's on-chain governance (Timelock + guardian), progressively decentralized — see [Governance](../governance/README.md).
 
 ***
 

@@ -25,6 +25,7 @@ See [Status & Maturity](overview/status.md) for per-module status (live / testne
 | **Enable agent payments** | [Unibase Pay Quick Start](get-started/pay-quickstart.md) |
 | **Run storage/validator nodes** | [Unibase DA Quick Start](get-started/da-quickstart.md) |
 | **Capture & reuse my AI chats** | [Unibase Memory](unibase-memory/getting-started.md) |
+| **Stake UB & vote on parameters** | [Governance](governance/README.md) |
 
 ---
 
