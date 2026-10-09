@@ -1,5 +1,5 @@
 # Builds the Starlight site and publishes it to GitHub Pages:
-# https://docs.unibase.io/
+# https://docs.unibase.com/
 name: Deploy docs
 
 on:
@@ -20,7 +20,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      DOCS_SITE: https://docs.unibase.io # custom domain serves from the root, so no DOCS_BASE
+      DOCS_SITE: https://docs.unibase.com # custom domain serves from the root, so no DOCS_BASE
     steps:
       - uses: actions/checkout@v7
       - uses: withastro/action@v6
