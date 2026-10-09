@@ -1,0 +1,39 @@
+# Builds the Starlight site and publishes it to GitHub Pages:
+# https://unibaseio.github.io/unibase-docs/
+name: Deploy docs
+
+on:
+  push:
+    branches: [main, feat/starlight]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DOCS_SITE: https://unibaseio.github.io
+      DOCS_BASE: /unibase-docs # drop this (and set DOCS_SITE) once a custom domain is attached
+    steps:
+      - uses: actions/checkout@v7
+      - uses: withastro/action@v6
+        with:
+          node-version: 22
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

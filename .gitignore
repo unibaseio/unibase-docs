@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+src/content/docs/
+public/gitbook-assets/
+.claude/worktrees/
+.DS_Store
+public/files/
