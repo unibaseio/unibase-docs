@@ -29,8 +29,8 @@ export CHAIN_TYPE=base-sepolia
 
 ### Gateway Server
 
-* https://gateway.membase.unibase.com/
+* https://gateway.unibase.com/
 
 ### Explorer
 
-[testnet.explorer.unibase.com](https://www.testnet.explorer.unibase.com)
+[explorer.unibase.com](https://explorer.unibase.com)
