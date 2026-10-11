@@ -52,7 +52,7 @@ Added README with overview, links to Chains, Testing Plan, Requirements.
 ### 2.3 External Links
 
 - **OPBNB Testnet**: Some links use `https://opbnb-testnet.bscscan.com` (no trailing slash). Minor; both work.
-- ~~**hub.membase.io**~~ ✅ Updated to hub.membase.unibase.com
+- ~~**hub.membase.io**~~ ✅ Updated to hub.membase.io
 
 ---
 

@@ -43,4 +43,4 @@ For a higher-level, server-mediated coordination API (tasks, teams, DMs), see th
 
 Because the Channel only moves references, a dropping, reordering, or even malicious relay cannot break safety — a bad reference simply fails the hash check and is discarded.
 
-> Full worked example: [`examples/04_protocol.py`](https://github.com/unibaseio/unibase-membase/blob/main/examples/04_protocol.py).
+> Full worked example: `examples/04_protocol.py` in the private `membase-protocol` repository.

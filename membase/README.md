@@ -8,12 +8,14 @@ AI agents need more than an ephemeral context window. They need to:
 * **Collaborate** — with other agents, over shared state any party can verify.
 * **Transact** — pay and get paid for services, on-chain.
 
-Membase delivers all three in one SDK, with **no central backend in the trust path**: agents read and write the [Membase Hub](https://hub.membase.unibase.com) directly with their own key, and confidentiality comes from client-side encryption — not server ACLs.
+Membase delivers all three in one SDK, with **no central backend in the trust path**: agents read and write the [Membase Hub](https://hub.membase.io) directly with their own key, and confidentiality comes from client-side encryption — not server ACLs.
 
 ### 30-second example
 
+> The protocol SDK is not published — its repository is private. If you do not have access, install the shipping product instead (`pip install unibaseio-membase`) and use [docs.membase.ai](https://docs.membase.ai); it is a different API and the code below will not run against it. See [Integration Options](integration-options.md).
+
 ```bash
-pip install "unibase-membase-sdk @ git+https://github.com/unibaseio/unibase-membase.git"
+pip install "unibase-membase-sdk @ git+https://github.com/unibaseio/membase-protocol.git"
 ```
 
 ```python
@@ -47,7 +49,7 @@ print(alice.memory.answer("When is the Tokyo trip?", query_date="2026-08-01"))
 
 | Option | Best for | Setup |
 |---|---|---|
-| **SDK** | Custom agents, full control | `pip install "unibase-membase-sdk @ git+…/unibase-membase.git"` |
+| **SDK** | Custom agents, full control | Private repo — see [Integration Options](integration-options.md) |
 | **MCP** | Claude Desktop, Cline, MCP clients | Install the `.mcpb` bundle — see [Integration Options](integration-options.md) |
 | **Skill** | BitAgent / skill-based frameworks | Install the skill, configure — no code |
 
@@ -62,4 +64,4 @@ print(alice.memory.answer("When is the Tokyo trip?", query_date="2026-08-01"))
 
 ### Resources
 
-* [GitHub](https://github.com/unibaseio/unibase-membase) · [Membase Hub](https://hub.membase.unibase.com)
+* [Membase Hub](https://hub.membase.io) · the published product: [docs.membase.ai](https://docs.membase.ai), [github.com/unibaseio/membase-ai](https://github.com/unibaseio/membase-ai)

@@ -2,25 +2,44 @@
 
 ### Membase
 
-| SDK | Link | Language |
-|-----|------|----------|
-| Python (current) | [github.com/unibaseio/unibase-membase](https://github.com/unibaseio/unibase-membase) | Python ≥3.11 |
-| MCP | prebuilt `.mcpb` bundle on the [releases page](https://github.com/unibaseio/unibase-membase/releases) | MCP / Claude Desktop |
+| SDK | Package | Language |
+|-----|---------|----------|
+| Python | [`unibaseio-membase`](https://pypi.org/project/unibaseio-membase/) | Python ≥3.10 |
+| TypeScript | [`@unibaseio/membase`](https://www.npmjs.com/package/@unibaseio/membase) | Node ≥18, Deno, Bun |
+| Command line | [`@unibaseio/membase-cli`](https://www.npmjs.com/package/@unibaseio/membase-cli) | the `membase` command, Node ≥18.3 |
+| MCP | hosted endpoint, or `membase --local mcp` | any MCP client |
 
-**Install (Python):**
+**Install:**
 ```bash
-# Minimal (cooperation protocol + Hub access)
-pip install "unibase-membase-sdk @ git+https://github.com/unibaseio/unibase-membase.git"
-
-# With LLM recall + MCP adapter
-pip install "unibase-membase-sdk[mcp,recovery,runtime] @ git+https://github.com/unibaseio/unibase-membase.git"
+pip install unibaseio-membase              # hosted; needs MEMBASE_API_KEY
+pip install 'unibaseio-membase[local]'     # local engine; Python 3.12 or 3.13
+npm install @unibaseio/membase
+npm install -g @unibaseio/membase-cli
 ```
 
-See [Membase → Integration Options](../membase/integration-options.md) for MCP and Skill setup.
+```python
+from membase import Membase
 
-> **Versioning:** installs track the `main` branch (HEAD). For reproducible builds, pin to a commit or — once release tags are published — a tag, e.g. `… @ git+https://github.com/unibaseio/unibase-membase.git@<tag>`.
+m = Membase()
+m.memories.add("We picked Postgres for the ledger service.", container="Engineering")
+m.ask("Which database did we choose for the ledger?")
+```
 
-> Legacy 1.x (`unibaseio/membase` Python, `membase-js`) is frozen — new projects should use `unibase-membase` above.
+Source: [github.com/unibaseio/membase-ai](https://github.com/unibaseio/membase-ai). Full method,
+REST and MCP reference: [docs.membase.ai](https://docs.membase.ai).
+
+> `local` is the only extra. It pulls in `unibaseio-membase-core`, the compiled memory engine,
+> which supports **Python 3.12 and 3.13 only** — the hosted client alone runs on 3.10+.
+
+> **This is not the same SDK as the [Membase](../membase/README.md) section of these docs.** That
+> section documents the protocol SDK — wallet identity, domains, cooperation, settlement — which
+> is a separate codebase (`unibaseio/membase-protocol`, private) and is not published. The
+> packages above are the shipping product: one hosted memory with containers, documents and MCP.
+> They share a name and nothing else; `create_domain`, `Wallet` and `unibase_membase` do not
+> exist in them.
+
+> Legacy 1.x (`membase-js`) is frozen. Note that `membase` on PyPI and `membase` / `@membase` on
+> npm belong to unrelated parties — the Unibase packages are the `unibaseio` ones above.
 
 ### AIP
 
