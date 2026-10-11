@@ -1,6 +1,6 @@
 # SDK Reference
 
-The Membase Python API at a glance (`unibase-membase-sdk`). Import everything from the top-level package:
+The Membase **protocol** Python API at a glance (`unibase-membase-sdk`, import `unibase_membase`) — not the published `unibaseio-membase` product package, which has a different API ([SDK](../reference/sdk.md)). Import everything from the top-level package:
 
 ```python
 from unibase_membase import Membase, Wallet
@@ -61,7 +61,7 @@ See [Domains & Encryption](authorization.md).
 
 ### Cooperation (multi-agent)
 
-The agent-direct protocol (signed logs, sessions, games) lives under `unibase_membase.core.protocol` and `unibase_membase.games` (`rps`, `vote`, `auction`, `compare`). For a server-mediated coordination API use `Cooperation` / `MembaseClient`. See [Cooperation Protocol](cooperation.md) and [`examples/04_protocol.py`](https://github.com/unibaseio/unibase-membase/blob/main/examples/04_protocol.py).
+The agent-direct protocol (signed logs, sessions, games) lives under `unibase_membase.core.protocol` and `unibase_membase.games` (`rps`, `vote`, `auction`, `compare`). For a server-mediated coordination API use `Cooperation` / `MembaseClient`. See [Cooperation Protocol](cooperation.md) and `examples/04_protocol.py`.
 
 ### Settlement (server-mediated)
 
@@ -81,11 +81,11 @@ Pass a dict or `Config` instead of env vars (secrets stay in env):
 from unibase_membase.client import MembaseClient
 client = MembaseClient(
     wallet=Wallet.from_key(os.environ["MY_AGENT_KEY"]),
-    config={"server": {"hub_url": "https://hub.membase.unibase.com"},
+    config={"server": {"hub_url": "https://hub.membase.io"},
             "runtime": {"reader_model": "gpt-4o"}},
 )
 ```
 
 `Config.from_json("path.json")` and `Config.from_dict({...})` also work. Unknown keys raise (typos won't pass silently).
 
-> Full, runnable examples: [`examples/`](https://github.com/unibaseio/unibase-membase/tree/main/examples) (grouped by layer: persistence → recovery → runtime → cooperation).
+> Full, runnable examples: `examples/` in the private `membase-protocol` repository (grouped by layer: persistence → recovery → runtime → cooperation).

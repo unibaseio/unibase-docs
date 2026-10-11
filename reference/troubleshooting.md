@@ -24,7 +24,7 @@
 
 * Use Python 3.10 or higher
 * Create a fresh virtual environment: `python -m venv venv && source venv/bin/activate`
-* Reinstall the SDK you use — Membase 2.0: `pip install --upgrade "unibase-membase-sdk @ git+https://github.com/unibaseio/unibase-membase.git"` (AIP: `aip-go-sdk` / `unibase-aip-sdk`; legacy `membase` for 1.x)
+* Reinstall the SDK you use — the published Membase product: `pip install --upgrade unibaseio-membase` (import `membase`). The Membase 2.0 protocol SDK (import `unibase_membase`) ships from a private repository: `pip install --upgrade "unibase-membase-sdk @ git+https://github.com/unibaseio/membase-protocol.git"`. AIP: `aip-go-sdk` / `unibase-aip-sdk`
 
 ### Memory & Recall (Membase)
 

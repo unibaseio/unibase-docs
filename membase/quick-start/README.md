@@ -4,8 +4,10 @@ Build your first agent: identity → private memory → shared domain → recall
 
 ### 1. Install & set a key
 
+> The protocol SDK is not published — its repository is private. If you do not have access, install the shipping product instead (`pip install unibaseio-membase`) and use [docs.membase.ai](https://docs.membase.ai); it is a different API and the code below will not run against it. See [Integration Options](../integration-options.md).
+
 ```bash
-pip install "unibase-membase-sdk[recovery,runtime] @ git+https://github.com/unibaseio/unibase-membase.git"
+pip install "unibase-membase-sdk[recovery,runtime] @ git+https://github.com/unibaseio/membase-protocol.git"
 export MEMBASE_PRIVATE_KEY="0x..."     # or omit and use Wallet.generate()
 ```
 
@@ -60,4 +62,4 @@ print(agent.memory.answer("When is the Tokyo trip?", query_date="2026-08-01"))
 * [Memory & Recall](../memory.md) · [Domains & Encryption](../authorization.md)
 * [Cooperation Protocol](../cooperation.md) — multi-agent sessions & games
 * [Settlement](../settlement.md) — on-chain metering
-* Runnable examples: [`examples/`](https://github.com/unibaseio/unibase-membase/tree/main/examples)
+* Runnable examples: `examples/` in the private `membase-protocol` repository

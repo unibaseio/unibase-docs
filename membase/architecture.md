@@ -5,7 +5,7 @@ Membase rests on one invariant: **each agent owns a wallet; the wallet's private
 ### Topology
 
 ```
-                Membase Hub  (decentralized KV, hub.membase.unibase.com)
+                Membase Hub  (decentralized KV, hub.membase.io)
                 per-(wallet, cid) bytes
                           ▲
                           │  wallet-signed pointers + encrypted values

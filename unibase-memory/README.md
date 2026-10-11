@@ -33,4 +33,4 @@ One encrypted, portable memory across your AI chats — a Chrome extension that 
 
 ### Resources
 
-* [Chrome Web Store](https://chromewebstore.google.com/detail/edmncknbiihfoakimejbepnaeemaaamf) · [Unibase Explorer](https://hub.membase.unibase.com)
+* [Chrome Web Store](https://chromewebstore.google.com/detail/edmncknbiihfoakimejbepnaeemaaamf) · [Unibase Explorer](https://hub.membase.io)

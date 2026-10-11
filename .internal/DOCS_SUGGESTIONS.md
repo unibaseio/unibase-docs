@@ -29,7 +29,7 @@ go build
 
 ### 1.3 reference/hub.md — Hub URLs ✅ Resolved
 
-All Hub URLs updated to `hub.membase.unibase.com` (mainnet) and `testnet.hub.membase.unibase.com` (testnet).
+All Hub URLs updated to `hub.membase.io` (mainnet) and `testnet.hub.membase.io` (testnet).
 
 ### 1.4 membase/quick-start/multi-memory.md — Typos
 

@@ -6,19 +6,19 @@ The Memory Hub stores and retrieves agent data. Small files are aggregated and s
 
 **Download**
 
-* Browser: `https://testnet.hub.membase.unibase.com/api/download?name=<file>&owner=<owner>`
+* Browser: `https://testnet.hub.membase.io/api/download?name=<file>&owner=<owner>`
 * Shell:
 
 ```bash
-wget "https://hub.membase.unibase.com/api/download?name=<file>&owner=<owner>" -O <saved-name>
+wget "https://hub.membase.io/api/download?name=<file>&owner=<owner>" -O <saved-name>
 # or
-curl "https://hub.membase.unibase.com/api/download?name=<file>&owner=<owner>"
+curl "https://hub.membase.io/api/download?name=<file>&owner=<owner>"
 ```
 
 **Upload**
 
 ```bash
-curl -X POST https://hub.membase.unibase.com/api/upload -d '{
+curl -X POST https://hub.membase.io/api/upload -d '{
   "id": "test1",
   "owner": "0xabcd",
   "message": "Your content here"
@@ -38,4 +38,4 @@ go build
 
 ### Web UI
 
-Visit [https://hub.membase.unibase.com/](https://hub.membase.unibase.com/) to browse and manage your synced memory.
+Visit [https://hub.membase.io/](https://hub.membase.io/) to browse and manage your synced memory.

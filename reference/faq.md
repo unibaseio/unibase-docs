@@ -16,7 +16,7 @@ See [Supported Networks](networks.md). BNBChain Mainnet, BNBChain Testnet, OPBNB
 * **Skill** — Use as a skill in frameworks like BitAgent.
 
 **Where is my data stored?**  
-Data is encoded and stored across decentralized nodes via Unibase DA. You can view synced data at [hub.membase.unibase.com](https://hub.membase.unibase.com).
+Data is encoded and stored across decentralized nodes via Unibase DA. You can view synced data at [hub.membase.io](https://hub.membase.io).
 
 ### AIP
 
