@@ -11,6 +11,12 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Unibase Docs',
+      // Same icons as unibase.com
+      favicon: '/favicon.ico',
+      head: [
+        { tag: 'link', attrs: { rel: 'icon', href: '/icon.svg', type: 'image/svg+xml' } },
+        { tag: 'link', attrs: { rel: 'apple-touch-icon', href: '/apple-icon.png' } },
+      ],
       sidebar: sidebar(),
     }),
   ],
