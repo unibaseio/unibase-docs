@@ -31,7 +31,10 @@ export CHAIN_TYPE=base-sepolia
 
 ### Gateway Server
 
-* https://gateway.unibase.com/
+* `https://testnet.gateway.unibase.com` — base URL for this (base-sepolia) network.
+  Node info and health: [`/v1/info`](https://testnet.gateway.unibase.com/v1/info).
+  `https://gateway.unibase.com` reaches the same gateway today, but prefer the qualified
+  name on this page — it will keep pointing at testnet once a mainnet gateway exists.
 
 ### Explorer
 
