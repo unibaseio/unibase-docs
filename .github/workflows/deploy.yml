@@ -4,7 +4,8 @@ name: Deploy docs
 
 on:
   push:
-    branches: [main, feat/starlight]
+    branches: [main]
+  pull_request: # check + build only; deploy runs on main
   workflow_dispatch:
 
 permissions:
@@ -13,21 +14,21 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }} # PR checks never cancel a main deploy
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      DOCS_SITE: https://docs.unibase.com # custom domain serves from the root, so no DOCS_BASE
     steps:
       - uses: actions/checkout@v7
+      - run: node scripts/check-docs.mjs # Starlight format rules — see CLAUDE.md
       - uses: withastro/action@v6
         with:
           node-version: 22
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:

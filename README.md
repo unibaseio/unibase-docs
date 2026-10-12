@@ -1,54 +1,13 @@
 # Unibase Docs
 
-### 1. What is Unibase?
+Source for **[docs.unibase.com](https://docs.unibase.com)** — built with [Starlight](https://starlight.astro.build) and deployed to GitHub Pages on every push to `main` (`.github/workflows/deploy.yml`).
 
-Unibase is a high-performance decentralized AI memory layer. It equips AI agents with **long-term memory** and **cross-platform interoperability**, enabling them to **remember**, **collaborate**, and **self-evolve** autonomously.
+Pages live in `src/content/docs/`; the sidebar is defined in `astro.config.mjs`. **Read [CLAUDE.md](CLAUDE.md) first** — the site is Starlight, not GitBook (retired), and `npm run check` enforces the format.
 
-Unibase is building the foundation for the **Open Agent Internet** — a modular, verifiable, and composable AI agent ecosystem onchain.
-
-### 2. Project Status
-
-* ✅ **Live** on **BNBChain Mainnet**
-* ✅ SDKs, Docs, and Explorer fully released
-* ✅ Integrated with **MCP, ElizaOS, Virtuals, and Swarms**
-* ✅ 1,000+ agent interactions recorded via Unibase SDK
-* ✅ BitAgent, TradingFlow, TwinX, Beeper online
-
-See [Status & Maturity](overview/status.md) for per-module status (live / testnet / in audit).
-
-### 3. Choose Your Path
-
-| I want to... | Start here |
-|--------------|------------|
-| **Add memory to my Agent** | [Membase Quick Start](get-started/membase-quickstart.md) |
-| **Build multi-agent systems** | [AIP Quick Start](get-started/aip-quickstart.md) |
-| **Enable agent payments** | [Unibase Pay Quick Start](get-started/pay-quickstart.md) |
-| **Run storage/validator nodes** | [Unibase DA Quick Start](get-started/da-quickstart.md) |
-| **Capture & reuse my AI chats** | [Unibase Memory](unibase-memory/getting-started.md) |
-| **Stake UB & vote on parameters** | [Governance](governance/README.md) |
-
----
-
-### 4. Problems Solved
-
-| Problem | Unibase Solution |
-|---------|------------------|
-| No long-term memory | Membase — persistent, verifiable storage |
-| Isolated agents | AIP — cross-platform identity & interoperability |
-| Data sovereignty | Decentralized storage, on-chain verification |
-
-### 5. Core Modules
-
-| Module | One-line |
-|--------|----------|
-| **Membase** | Agent memory & collaboration SDK — wallet-owned encrypted memory, on-device recall, agent-direct cooperation, on-chain settlement. SDK / MCP / skill. |
-| **AIP Protocol** | Agent interoperability — identity, permissioning, shared memory. ERC-8004 & x402. |
-| **Unibase Pay** | x402 on BNB Chain — agents search, pay, access. Privy wallet, micropayments. |
-| **Unibase DA** | Data availability — erasure-coded, ZK-verified, honest-one fraud proofs, EB+ capacity. |
-| **Unibase Memory** | Chrome extension — capture, organize & reuse ChatGPT/Claude/Gemini chats. Encrypted, owned, verifiable. |
-
-> **Membase vs Unibase Memory:** **Membase** is the developer **SDK** for building agents with memory & collaboration. **Unibase Memory** is the consumer **Chrome extension** for capturing and reusing your own AI chats (built on the same stack).
-
-### 6. Ecosystem
-
-BitAgent · TwinX · TradingFlow · MCP, ElizaOS, Virtuals, Swarms
+```bash
+nvm use          # Node 22 (.nvmrc)
+npm install
+npm run dev      # http://localhost:4321
+npm run check    # format rules
+npm run build    # -> dist/
+```
