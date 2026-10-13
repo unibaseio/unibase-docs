@@ -66,4 +66,4 @@ print(alice.memory.answer("When is the Tokyo trip?", query_date="2026-08-01"))
 
 ### Resources
 
-* [Membase Hub](https://hub.membase.io) · the published product: [docs.membase.ai](https://docs.membase.ai), [github.com/unibaseio/membase-ai](https://github.com/unibaseio/membase-ai)
+* [Membase Hub](https://hub.membase.io) · the published product: [docs.membase.ai](https://docs.membase.ai), [github.com/unibaseio/membase](https://github.com/unibaseio/membase)

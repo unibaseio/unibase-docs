@@ -27,7 +27,7 @@ m.memories.add("We picked Postgres for the ledger service.", container="Engineer
 m.ask("Which database did we choose for the ledger?")
 ```
 
-Source: [github.com/unibaseio/membase-ai](https://github.com/unibaseio/membase-ai). Full method,
+Source: [github.com/unibaseio/membase](https://github.com/unibaseio/membase). Full method,
 REST and MCP reference: [docs.membase.ai](https://docs.membase.ai).
 
 > `local` is the only extra. It pulls in `unibaseio-membase-core`, the compiled memory engine,
