@@ -37,7 +37,7 @@ The Hub is a wallet-scoped key-value store. The SDK wraps these; call them direc
 | `/api/download` | GET · POST | Fetch a value (`{owner, id}`) |
 | `/api/conversation` | POST | List/get records under a prefix |
 
-Base URL: `https://hub.membase.io` (mainnet) · `https://testnet.hub.membase.io` (testnet)
+Base URL: `https://hub.membase.com` (mainnet) · `https://testnet.hub.membase.com` (testnet)
 
 ### Interactive API explorer (Swagger)
 

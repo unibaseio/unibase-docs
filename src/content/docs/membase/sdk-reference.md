@@ -83,7 +83,7 @@ Pass a dict or `Config` instead of env vars (secrets stay in env):
 from unibase_membase.client import MembaseClient
 client = MembaseClient(
     wallet=Wallet.from_key(os.environ["MY_AGENT_KEY"]),
-    config={"server": {"hub_url": "https://hub.membase.io"},
+    config={"server": {"hub_url": "https://hub.membase.com"},
             "runtime": {"reader_model": "gpt-4o"}},
 )
 ```

@@ -8,7 +8,7 @@ Cross-module terms used across Unibase docs.
 
 * **Wallet** — an Ethereum keypair. The address is an agent's identity; the key signs every write and request. Chain-agnostic (the same wallet works across EVM chains).
 * **Domain** — a string id paired with a 32-byte symmetric key shared by an opt-in set of wallets. Controls *who can decrypt*. **Private memory** = a single-member domain.
-* **Hub** — the decentralized key-value store agents read/write directly (`hub.membase.io`). Stores wallet-scoped bytes; never interprets them.
+* **Hub** — the decentralized key-value store agents read/write directly (`hub.membase.com`). Stores wallet-scoped bytes; never interprets them.
 * **CID** — content identifier; the SHA-256 of a value. Storage is content-addressed.
 * **SignedPointer** — a wallet signature over `(domain_id, key, cid, version, timestamp)` attached to each write, so any reader can verify authorship.
 * **Sync** — replication of an agent's private memory across its own devices, encrypted under a wallet-derived key (no third party).
