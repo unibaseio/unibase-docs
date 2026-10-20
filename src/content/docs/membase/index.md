@@ -10,11 +10,11 @@ AI agents need more than an ephemeral context window. They need to:
 * **Collaborate** — with other agents, over shared state any party can verify.
 * **Transact** — pay and get paid for services, on-chain.
 
-Membase delivers all three in one SDK, with **no central backend in the trust path**: agents read and write the [Membase Hub](https://hub.membase.io) directly with their own key, and confidentiality comes from client-side encryption — not server ACLs.
+Membase delivers all three in one SDK, with **no central backend in the trust path**: agents read and write the [Membase Hub](https://hub.membase.com) directly with their own key, and confidentiality comes from client-side encryption — not server ACLs.
 
 ### 30-second example
 
-> The protocol SDK is not published — its repository is private. If you do not have access, install the shipping product instead (`pip install unibaseio-membase`) and use [docs.membase.ai](https://docs.membase.ai); it is a different API and the code below will not run against it. See [Integration Options](/membase/integration-options/).
+> The protocol SDK is not published — its repository is private. If you do not have access, install the shipping product instead (`pip install unibaseio-membase`) and use [docs.membase.com](https://docs.membase.com); it is a different API and the code below will not run against it. See [Integration Options](/membase/integration-options/).
 
 ```bash
 pip install "unibase-membase-sdk @ git+https://github.com/unibaseio/membase-protocol.git"
@@ -66,4 +66,4 @@ print(alice.memory.answer("When is the Tokyo trip?", query_date="2026-08-01"))
 
 ### Resources
 
-* [Membase Hub](https://hub.membase.io) · the published product: [docs.membase.ai](https://docs.membase.ai), [github.com/unibaseio/membase](https://github.com/unibaseio/membase)
+* [Membase Hub](https://hub.membase.com) · the published product: [docs.membase.com](https://docs.membase.com), [github.com/unibaseio/membase](https://github.com/unibaseio/membase)

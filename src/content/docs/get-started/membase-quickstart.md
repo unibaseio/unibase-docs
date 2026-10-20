@@ -6,7 +6,7 @@ Give an AI agent persistent, owned memory in 5 minutes.
 
 ### 1. Install
 
-> The protocol SDK is not published — its repository is private. If you do not have access, install the shipping product instead (`pip install unibaseio-membase`) and use [docs.membase.ai](https://docs.membase.ai); it is a different API and the code below will not run against it. See [Integration Options](/membase/integration-options/).
+> The protocol SDK is not published — its repository is private. If you do not have access, install the shipping product instead (`pip install unibaseio-membase`) and use [docs.membase.com](https://docs.membase.com); it is a different API and the code below will not run against it. See [Integration Options](/membase/integration-options/).
 
 ```bash
 pip install "unibase-membase-sdk[recovery,runtime] @ git+https://github.com/unibaseio/membase-protocol.git"
@@ -45,7 +45,7 @@ print(agent.memory.answer("When is the Tokyo trip?", query_date="2026-08-01"))
 # → {'answer': 'August 2026', ...}
 ```
 
-Synced memory is verifiable on the [Membase Hub](https://hub.membase.io).
+Synced memory is verifiable on the [Membase Hub](https://hub.membase.com).
 
 ---
 
