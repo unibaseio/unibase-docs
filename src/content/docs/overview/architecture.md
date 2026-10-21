@@ -69,4 +69,4 @@ The four core modules are independent but composable — each owns one concern, 
 | Let agents from different vendors discover & call each other | **AIP** |
 | Charge / pay per agent request or API call | **Unibase Pay** |
 | Store large data with on-chain verifiability | **Unibase DA** |
-| Capture & reuse your own ChatGPT/Claude/Gemini chats (no code) | **Unibase Memory** (Chrome extension) |
+| Capture & reuse your own ChatGPT/Claude/Gemini chats (no code) | **Membase Extension** (Chrome) |

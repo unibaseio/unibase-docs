@@ -26,7 +26,7 @@ See [Status & Maturity](/overview/status/) for per-module status (live / testnet
 | **Build multi-agent systems** | [AIP Quick Start](/get-started/aip-quickstart/) |
 | **Enable agent payments** | [Unibase Pay Quick Start](/get-started/pay-quickstart/) |
 | **Run storage/validator nodes** | [Unibase DA Quick Start](/get-started/da-quickstart/) |
-| **Capture & reuse my AI chats** | [Unibase Memory](/unibase-memory/getting-started/) |
+| **Capture & reuse my AI chats** | [Membase Extension](/unibase-memory/getting-started/) |
 | **Stake UB & vote on parameters** | [Governance](/governance/) |
 
 ---
@@ -47,9 +47,9 @@ See [Status & Maturity](/overview/status/) for per-module status (live / testnet
 | **AIP Protocol** | Agent interoperability — identity, permissioning, shared memory. ERC-8004 & x402. |
 | **Unibase Pay** | x402 on BNB Chain — agents search, pay, access. Privy wallet, micropayments. |
 | **Unibase DA** | Data availability — erasure-coded, ZK-verified, honest-one fraud proofs, EB+ capacity. |
-| **Unibase Memory** | Chrome extension — capture, organize & reuse ChatGPT/Claude/Gemini chats. Encrypted, owned, verifiable. |
+| **Membase Extension** | Chrome extension — capture, organize & reuse ChatGPT/Claude/Gemini chats. Encrypted, owned, verifiable. |
 
-> **Membase vs Unibase Memory:** **Membase** is the developer **SDK** for building agents with memory & collaboration. **Unibase Memory** is the consumer **Chrome extension** for capturing and reusing your own AI chats (built on the same stack).
+> **Two things share the Membase name:** the **Membase SDK/protocol** is for developers building agents with memory & collaboration; the **Membase extension** is the consumer **Chrome extension** for capturing and reusing your own AI chats. Same stack, different surface. (The extension was formerly called Unibase Memory.)
 
 ### 6. Ecosystem
 

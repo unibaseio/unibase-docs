@@ -8,7 +8,7 @@ Automatically sync new conversations from **ChatGPT, Claude, and Gemini**, with 
 
 ### Web clipper & Library
 
-**Right-click any web page or selection → Save to Unibase Memory.** Clips are extracted into clean documents and collected under the **Library** tab, searchable and reusable alongside your chats.
+**Right-click any web page or selection → Save page to Membase.** Clips are extracted into clean documents and collected under the **Library** tab, searchable and reusable alongside your chats.
 
 ### Search & organize
 
@@ -33,13 +33,13 @@ Optional AI-powered tagging generates tags automatically. The model (a small mul
 
 ### Delete & restore
 
-Deleting a memory is a **soft delete** — it's hidden from the panel but recoverable. Because the encrypted copy stays on Membase, you can restore it anytime.
+Deleting a memory is a **soft delete** — it's hidden from the panel but recoverable. Because the encrypted copy stays on the Membase network, you can restore it anytime.
 
 ### Export backup
 
 Export all memories as a **JSON file** — a portable backup you keep, importable into other tools that support the same memory format.
 
-### Optional sync to Membase
+### Optional sync to the Membase network
 
 Choose whether to sync. When enabled, memories move beyond local browser storage onto Unibase's decentralized memory infrastructure — making them portable, recoverable, and verifiable on **Unibase Explorer** — while staying end-to-end encrypted. See [Architecture](/unibase-memory/architecture/).
 

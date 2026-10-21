@@ -234,7 +234,7 @@ export default defineConfig({
           ]
         },
         {
-          "label": "Unibase Memory",
+          "label": "Membase Extension",
           "items": [
             {
               "label": "Overview",

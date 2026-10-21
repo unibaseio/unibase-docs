@@ -1,5 +1,5 @@
 ---
-title: "Unibase Memory"
+title: "Membase Extension"
 ---
 
 One encrypted, portable memory across your AI chats — a Chrome extension that captures, organizes, and reuses your **ChatGPT**, **Claude**, and **Gemini** conversations (plus web content), so context follows you instead of staying locked inside one chatbot. Built on the Unibase memory stack: memory you can **encrypt, own, and verify**.
@@ -10,9 +10,9 @@ One encrypted, portable memory across your AI chats — a Chrome extension that 
 * **Clip** valuable web pages and selections into a personal Library.
 * **Organize** everything in one panel — search, tag, star, filter.
 * **Reuse** by sending the right memory straight back into your current AI chat.
-* **Sync (optional)** to Membase — end-to-end encrypted, portable, and verifiable on Unibase Explorer.
+* **Sync (optional)** to the Membase network — end-to-end encrypted, portable, and verifiable on Unibase Explorer.
 
-### Why Unibase Memory
+### Why Membase
 
 | vs. a chatbot's own history | vs. note-taking apps |
 |-----------------------------|----------------------|

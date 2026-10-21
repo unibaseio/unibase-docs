@@ -2,19 +2,19 @@
 title: "Getting Started"
 ---
 
-Unibase Memory is a Chrome extension. Install it, sign in, and your AI conversations start flowing into one searchable memory.
+Membase is a Chrome extension. Install it, sign in, and your AI conversations start flowing into one searchable memory.
 
 ### Step 1 — Install
 
-Install **Unibase Memory** from the [Chrome Web Store](https://chromewebstore.google.com/detail/edmncknbiihfoakimejbepnaeemaaamf). New versions update automatically.
+Install **Membase** from the [Chrome Web Store](https://chromewebstore.google.com/detail/edmncknbiihfoakimejbepnaeemaaamf). New versions update automatically.
 
 ### Step 2 — Pin the extension
 
-Open the extensions menu in the top-right of the browser, find **Unibase Memory**, and click the pin icon to keep it in the toolbar.
+Open the extensions menu in the top-right of the browser, find **Membase**, and click the pin icon to keep it in the toolbar.
 
 ### Step 3 — Sign in
 
-Click **Sign in**. Unibase Memory uses Privy and supports:
+Click **Sign in**. Membase uses Privy and supports:
 
 * **Email**
 * **X / Twitter**
@@ -31,7 +31,7 @@ Open a conversation on `chatgpt.com`, `claude.ai`, or `gemini.google.com`. New c
 * **Last 7 days**
 * **Last 14 days**
 
-You can also **right-click any web page or selection → Save to Unibase Memory** to clip it into your Library.
+You can also **right-click any web page or selection → Save page to Membase** to clip it into your Library.
 
 ### Step 5 — Reuse it
 

@@ -2,15 +2,15 @@
 title: "Architecture"
 ---
 
-Unibase Memory is more than a local chat organizer. It is built on Unibase's decentralized AI memory infrastructure, so memory is **local-first by default** and, when synced, **encrypted, owned, and verifiable**.
+The Membase extension is more than a local chat organizer. It is built on Unibase's decentralized AI memory infrastructure, so memory is **local-first by default** and, when synced, **encrypted, owned, and verifiable**.
 
 ### The pipeline
 
 ```
-Capture in the browser  →  Encrypt locally  →  Sync to Membase (optional)
+Capture in the browser  →  Encrypt locally  →  Sync to the Membase network (optional)
 ```
 
-Unlike typical browser extensions that store your data in a vendor-controlled database, Unibase Memory keeps cleartext on your device and only ever uploads ciphertext.
+Unlike typical browser extensions that store your data in a vendor-controlled database, the Membase extension keeps cleartext on your device and only ever uploads ciphertext.
 
 ### Encrypt
 
@@ -37,7 +37,7 @@ Once synced, memories are connected to Unibase's verifiable memory infrastructur
 
 ### The Unibase memory stack
 
-| Layer | Role for Unibase Memory |
+| Layer | Role for the extension |
 |-------|-------------------------|
 | **[Membase](/membase/)** | The memory layer that stores and manages synced AI memory |
 | **[Unibase DA](/unibase-da/)** | Verifiable data availability for scalable, durable memory |
