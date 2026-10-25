@@ -11,6 +11,7 @@ One encrypted, portable memory across your AI chats — a Chrome extension that 
 * **Organize** everything in one panel — search, tag, star, filter.
 * **Reuse** by sending the right memory straight back into your current AI chat.
 * **Sync (optional)** to the Membase network — end-to-end encrypted, portable, and verifiable on Unibase Explorer.
+  Explorer links appear per memory once you turn on **Show hub addresses** in the extension menu (off by default).
 
 ### Why Membase
 
@@ -24,7 +25,7 @@ One encrypted, portable memory across your AI chats — a Chrome extension that 
 
 * **Encrypt** — memory is encrypted locally on your device before any sync; only ciphertext leaves your machine.
 * **Own** — a cross-AI archive you keep and can export; reuse it across supported platforms and devices.
-* **Verify** — synced memories carry a verifiable record on Unibase Explorer, without exposing private content.
+* **Verify** — synced memories carry a verifiable record on Unibase Explorer, without exposing private content. Turn on **Show hub addresses** in the extension menu (off by default) to get a link on each memory.
 
 ### Next Steps
 
@@ -35,4 +36,4 @@ One encrypted, portable memory across your AI chats — a Chrome extension that 
 
 ### Resources
 
-* [Chrome Web Store](https://chromewebstore.google.com/detail/edmncknbiihfoakimejbepnaeemaaamf) · [Unibase Explorer](https://hub.membase.com)
+* [Chrome Web Store](https://chromewebstore.google.com/detail/edmncknbiihfoakimejbepnaeemaaamf) · [Unibase Explorer](https://www.explorer.unibase.com)

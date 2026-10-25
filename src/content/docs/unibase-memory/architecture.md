@@ -33,7 +33,7 @@ Your memories become a cross-AI archive you keep — not a feature locked inside
 
 ### Verify
 
-Once synced, memories are connected to Unibase's verifiable memory infrastructure and can be inspected on **Unibase Explorer** — which shows the verifiable record (ownership, sync status) as public proof the memory exists and belongs to your account, while the content itself stays encrypted.
+Once synced, memories are connected to Unibase's verifiable memory infrastructure and can be inspected on **Unibase Explorer** — reachable from each memory once **Show hub addresses** is turned on in the extension menu (off by default) — which shows the verifiable record (ownership, sync status) as public proof the memory exists and belongs to your account, while the content itself stays encrypted.
 
 ### The Unibase memory stack
 

@@ -32,7 +32,7 @@ Yes. Memory is **local-first** and, when synced, **end-to-end encrypted** with a
 
 ### Do I have to sync to the Membase network?
 
-No. Sync is optional. With it off, everything stays in local browser storage. With it on, memory becomes portable, recoverable, and verifiable on Unibase Explorer — while staying encrypted.
+No. Sync is optional. With it off, everything stays in local browser storage. With it on, memory becomes portable, recoverable, and verifiable on Unibase Explorer — while staying encrypted. The per-memory Explorer links are hidden until you turn on **Show hub addresses** in the extension menu.
 
 ---
 
