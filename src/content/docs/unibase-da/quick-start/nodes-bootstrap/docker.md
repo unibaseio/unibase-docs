@@ -2,6 +2,10 @@
 title: "Docker"
 ---
 
+:::caution[Outdated]
+This page is out of date. The `mossv2/dimo:*` images below were built for an earlier testnet deployment and cannot join the current base-sepolia network, so these steps will not work as written. Updated images and instructions will be published here.
+:::
+
 docker startup will automatically init and run&#x20;
 
 ### storage node
