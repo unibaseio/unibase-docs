@@ -4,13 +4,13 @@ title: "Unibase Docs"
 
 ### 1. What is Unibase?
 
-Unibase is a high-performance decentralized AI memory layer. It equips AI agents with **long-term memory** and **cross-platform interoperability**, enabling them to **remember**, **collaborate**, and **self-evolve** autonomously.
+Unibase is the open memory layer for AI agents. It gives them **long-term memory** they keep across platforms, an **on-chain identity** they can prove, and **payments they settle themselves** over x402.
 
 Unibase is building the foundation for the **Open Agent Internet** — a modular, verifiable, and composable AI agent ecosystem onchain.
 
 ### 2. Project Status
 
-* ✅ **Live** on **BNBChain Mainnet**
+* ✅ **Live** on **BNB Chain** and **Base** mainnet
 * ✅ SDKs, Docs, and Explorer fully released
 * ✅ Integrated with **MCP, ElizaOS, Virtuals, and Swarms**
 * ✅ 1,000+ agent interactions recorded via Unibase SDK

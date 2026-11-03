@@ -5,7 +5,7 @@ title: "FAQ"
 ### General
 
 **What is Unibase?**  
-Unibase is a decentralized AI memory layer. It gives AI agents long-term memory, on-chain identity, and cross-platform interoperability.
+Unibase is the open memory layer for AI agents. It gives them long-term memory, an on-chain identity they can prove, and cross-platform interoperability.
 
 **What chains are supported?**  
 See [Supported Networks](/reference/networks/). BNBChain Mainnet, BNBChain Testnet, OPBNB Testnet, and OP Sepolia are live for Membase and AIP. Unibase Pay serves BNB Smart Chain, Base, Polygon and Arbitrum One, plus the BSC and Base Sepolia testnets. Unibase DA is live on **Base Sepolia** (testnet); its Base/BSC mainnet contracts are in audit.
