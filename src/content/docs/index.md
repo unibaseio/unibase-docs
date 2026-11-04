@@ -49,7 +49,3 @@ See [Status & Maturity](/overview/status/) for per-module status (live / testnet
 | **Membase Extension** | Chrome extension — capture, organize & reuse ChatGPT/Claude/Gemini chats. Encrypted, owned, verifiable. |
 
 > **Two things share the Membase name:** the **Membase SDK/protocol** is for developers building agents with memory & collaboration; the **Membase extension** is the consumer **Chrome extension** for capturing and reusing your own AI chats. Same stack, different surface. (The extension was formerly called Unibase Memory.)
-
-### 6. Ecosystem
-
-BitAgent · TwinX · TradingFlow · MCP, ElizaOS, Virtuals, Swarms
