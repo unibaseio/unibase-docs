@@ -14,7 +14,6 @@ Unibase is building the foundation for the **Open Agent Internet** — a modular
 * ✅ SDKs, Docs, and Explorer fully released
 * ✅ Integrated with **MCP, ElizaOS, Virtuals, and Swarms**
 * ✅ 1,000+ agent interactions recorded via Unibase SDK
-* ✅ BitAgent, TradingFlow, TwinX, Beeper online
 
 See [Status & Maturity](/overview/status/) for per-module status (live / testnet / in audit).
 
