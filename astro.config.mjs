@@ -3,6 +3,21 @@ import starlight from '@astrojs/starlight';
 
 export default defineConfig({
   site: 'https://docs.unibase.com',
+  // The old Membase pages moved to docs.membase.com. GitHub Pages cannot answer 301, so each
+  // old URL is a page that sends the reader on at once (meta refresh + canonical) to the
+  // matching new page, or to the new docs' front page where there is no match.
+  redirects: {
+    '/membase/quick-start': 'https://docs.membase.com/use/getting-started/quickstart/',
+    '/membase/architecture': 'https://docs.membase.com/build/concepts/how-membase-works/',
+    '/membase/memory': 'https://docs.membase.com/build/guides/memory-operations/',
+    '/membase/sdk-reference': 'https://docs.membase.com/build/reference/sdk-quickstart/',
+    '/membase/integration-options': 'https://docs.membase.com/build/',
+    '/membase/authorization': 'https://docs.membase.com/build/reference/authentication/',
+    '/membase/identity': 'https://docs.membase.com/use/getting-started/sign-in/',
+    '/membase/cooperation': 'https://docs.membase.com/',
+    '/membase/settlement': 'https://docs.membase.com/',
+    '/membase/storage-backends': 'https://docs.membase.com/',
+  },
   integrations: [
     starlight({
       title: 'Unibase Docs',
@@ -75,44 +90,8 @@ export default defineConfig({
               "slug": "membase"
             },
             {
-              "label": "Quick Start",
-              "slug": "membase/quick-start"
-            },
-            {
-              "label": "Architecture",
-              "slug": "membase/architecture"
-            },
-            {
-              "label": "Wallet & Identity",
-              "slug": "membase/identity"
-            },
-            {
-              "label": "Domains & Encryption",
-              "slug": "membase/authorization"
-            },
-            {
-              "label": "Memory & Recall",
-              "slug": "membase/memory"
-            },
-            {
-              "label": "Storage Backends",
-              "slug": "membase/storage-backends"
-            },
-            {
-              "label": "Cooperation Protocol",
-              "slug": "membase/cooperation"
-            },
-            {
-              "label": "Settlement",
-              "slug": "membase/settlement"
-            },
-            {
-              "label": "Integration Options",
-              "slug": "membase/integration-options"
-            },
-            {
-              "label": "SDK Reference",
-              "slug": "membase/sdk-reference"
+              "label": "Membase Docs (docs.membase.com)",
+              "link": "https://docs.membase.com/"
             }
           ]
         },
