@@ -39,7 +39,7 @@ Once synced, memories are connected to Unibase's verifiable memory infrastructur
 
 | Layer | Role for the extension |
 |-------|-------------------------|
-| **[Membase](/membase/)** | The memory layer that stores and manages synced AI memory |
+| **[Membase](https://docs.membase.com/)** | The memory layer that stores and manages synced AI memory |
 | **[Unibase DA](/unibase-da/)** | Verifiable data availability for scalable, durable memory |
 | **Unibase decentralized storage** | Keeps memory persistent beyond one browser or device |
 | **Privy** | Sign-in & wallet (email / X / MetaMask) — source of the encryption key |

@@ -25,6 +25,6 @@ Unibase integrates with popular AI and agent frameworks.
 
 ### Getting Started
 
-1. **Memory** — [Membase Integration Options](/membase/integration-options/) (SDK, MCP, Skill)
+1. **Memory** — [Membase Integration Options](https://docs.membase.com/build/) (SDK, MCP, Skill)
 2. **Payments** — [Unibase Pay Privy Wallet](/unibase-pay/privy-wallet/)
 3. **Agents** — [AIP Quick Start](/get-started/aip-quickstart/)
