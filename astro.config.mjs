@@ -17,6 +17,8 @@ export default defineConfig({
     '/membase/cooperation': 'https://docs.membase.com/',
     '/membase/settlement': 'https://docs.membase.com/',
     '/membase/storage-backends': 'https://docs.membase.com/',
+    '/membase': 'https://docs.membase.com/',
+    '/get-started/membase-quickstart': 'https://docs.membase.com/use/getting-started/quickstart/',
   },
   integrations: [
     starlight({
@@ -66,7 +68,7 @@ export default defineConfig({
             },
             {
               "label": "Membase Quick Start",
-              "slug": "get-started/membase-quickstart"
+              "link": "https://docs.membase.com/use/getting-started/quickstart/"
             },
             {
               "label": "AIP Quick Start",
@@ -85,10 +87,6 @@ export default defineConfig({
         {
           "label": "Membase",
           "items": [
-            {
-              "label": "Overview",
-              "slug": "membase"
-            },
             {
               "label": "Membase Docs (docs.membase.com)",
               "link": "https://docs.membase.com/"
