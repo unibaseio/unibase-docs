@@ -6,7 +6,7 @@ Where the programmable surface of each module lives. Most integration is through
 
 | Module | Primary interface | Reference |
 |--------|-------------------|-----------|
-| **Membase** | Python SDK (`unibase-membase-sdk`) + MCP tools | [SDK](/reference/sdk/) · [Membase docs](/membase/) |
+| **Membase** | Python SDK (`unibase-membase-sdk`) + MCP tools | [SDK](/reference/sdk/) · [Membase docs](https://docs.membase.com/) |
 | **AIP** | Python SDK (`unibase-aip-sdk`) + Go (`aip-go-sdk`) | [SDK](/reference/sdk/) · [AIP docs](/aip/) |
 | **Unibase Pay** | HTTP API (x402) — see below | [Pay API Reference](/unibase-pay/api-reference/) |
 | **Unibase DA** | Go SDK + Hub HTTP — see below | [SDK](/reference/sdk/) · [DA docs](/unibase-da/) |

@@ -13,7 +13,7 @@ title: "Troubleshooting"
 #### "Permission denied" / Auth errors
 
 * Check the agent's key env is set — `MEMBASE_PRIVATE_KEY` (Membase 2.0), or `MEMBASE_ACCOUNT` / `MEMBASE_SECRET_KEY` (AIP wallet; legacy Membase 1.x).
-* **Membase 2.0:** read access is by **domain** membership — confirm the wallet was invited to the domain (see [Domains & Encryption](/membase/authorization/)).
+* **Membase 2.0:** read access is by **domain** membership — confirm the wallet was invited to the domain (see [Domains & Encryption](https://docs.membase.com/build/reference/authentication/)).
 * **AIP:** the agent registers with the AIP platform on start (ERC-8004 identity) — confirm `AIP_ENDPOINT` and the wallet env are set, and the agent reached the platform.
 
 #### Connection / Timeout errors

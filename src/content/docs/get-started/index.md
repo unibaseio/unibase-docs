@@ -10,7 +10,7 @@ Get up and running with Unibase in 5 minutes. Choose your path:
 
 | I want to... | Start here |
 |--------------|------------|
-| **Add memory to my Agent** | [Membase Quick Start](/get-started/membase-quickstart/) |
+| **Add memory to my Agent** | [Membase Quick Start](https://docs.membase.com/use/getting-started/quickstart/) |
 | **Build multi-agent systems** | [AIP Quick Start](/get-started/aip-quickstart/) |
 | **Enable agent payments** | [Unibase Pay Quick Start](/get-started/pay-quickstart/) |
 | **Run storage/validator nodes** | [Unibase DA Quick Start](/get-started/da-quickstart/) |
@@ -33,7 +33,7 @@ See [Prerequisites](/get-started/prerequisites/) for detailed setup.
 
 After completing a Quick Start:
 
-* **Membase** → [Quick Start](/membase/quick-start/) (Multi-Memory, Knowledge Base, Chain Tasks)
+* **Membase** → [Quick Start](https://docs.membase.com/use/getting-started/quickstart/) (Multi-Memory, Knowledge Base, Chain Tasks)
 * **AIP** → [Quick Start](/aip/quick-start/) (Agent-Tool, Agent-Agent, Chess)
 * **Unibase Pay** → [API Reference](/unibase-pay/api-reference/)
 * **Unibase DA** → [Node Operations](/unibase-da/quick-start/nodes-bootstrap/)

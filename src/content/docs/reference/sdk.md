@@ -33,7 +33,7 @@ REST and MCP reference: [docs.membase.ai](https://docs.membase.ai).
 > `local` is the only extra. It pulls in `unibaseio-membase-core`, the compiled memory engine,
 > which supports **Python 3.12 and 3.13 only** — the hosted client alone runs on 3.10+.
 
-> **This is not the same SDK as the [Membase](/membase/) section of these docs.** That
+> **This is not the same SDK as the [Membase](https://docs.membase.com/) section of these docs.** That
 > section documents the protocol SDK — wallet identity, domains, cooperation, settlement — which
 > is a separate codebase (`unibaseio/membase-protocol`, private) and is not published. The
 > packages above are the shipping product: one hosted memory with containers, documents and MCP.

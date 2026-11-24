@@ -42,7 +42,7 @@ encoding**. You keep your storage economics; DA adds trust.
 ### 🔑 What you can build on it
 
 * **Verifiable agent memory** — tamper-evident, on-chain-verifiable recall for AI agents.
-  This is the wedge, delivered through **[Membase](/membase/)** (memory SDK/MCP built on DA).
+  This is the wedge, delivered through **[Membase](https://docs.membase.com/)** (memory SDK/MCP built on DA).
 * **Proof-of-Availability for on-chain reputation** — a data-availability layer for the
   **ERC-8004** agent-reputation/identity ecosystem (evidence that a claim's backing data
   is actually retrievable).

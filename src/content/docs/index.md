@@ -21,7 +21,7 @@ See [Status & Maturity](/overview/status/) for per-module status (live / testnet
 
 | I want to... | Start here |
 |--------------|------------|
-| **Add memory to my Agent** | [Membase Quick Start](/get-started/membase-quickstart/) |
+| **Add memory to my Agent** | [Membase Quick Start](https://docs.membase.com/use/getting-started/quickstart/) |
 | **Build multi-agent systems** | [AIP Quick Start](/get-started/aip-quickstart/) |
 | **Enable agent payments** | [Unibase Pay Quick Start](/get-started/pay-quickstart/) |
 | **Run storage/validator nodes** | [Unibase DA Quick Start](/get-started/da-quickstart/) |
