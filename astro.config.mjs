@@ -19,6 +19,11 @@ export default defineConfig({
     '/membase/storage-backends': 'https://docs.membase.com/',
     '/membase': 'https://docs.membase.com/',
     '/get-started/membase-quickstart': 'https://docs.membase.com/use/getting-started/quickstart/',
+    '/unibase-memory/getting-started': 'https://docs.membase.com/use/bring-your-material-in/browser-extension/',
+    '/unibase-memory/features': 'https://docs.membase.com/use/bring-your-material-in/browser-extension/',
+    '/unibase-memory/architecture': 'https://docs.membase.com/use/bring-your-material-in/browser-extension/',
+    '/unibase-memory/faq': 'https://docs.membase.com/use/bring-your-material-in/browser-extension/',
+    '/unibase-memory': 'https://docs.membase.com/use/bring-your-material-in/browser-extension/',
   },
   integrations: [
     starlight({
@@ -207,31 +212,6 @@ export default defineConfig({
             {
               "label": "Proposals & Execution",
               "slug": "governance/proposals"
-            }
-          ]
-        },
-        {
-          "label": "Membase Extension",
-          "items": [
-            {
-              "label": "Overview",
-              "slug": "unibase-memory"
-            },
-            {
-              "label": "Getting Started",
-              "slug": "unibase-memory/getting-started"
-            },
-            {
-              "label": "Features",
-              "slug": "unibase-memory/features"
-            },
-            {
-              "label": "Architecture",
-              "slug": "unibase-memory/architecture"
-            },
-            {
-              "label": "FAQ",
-              "slug": "unibase-memory/faq"
             }
           ]
         },
