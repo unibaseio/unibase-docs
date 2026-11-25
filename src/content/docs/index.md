@@ -25,7 +25,7 @@ See [Status & Maturity](/overview/status/) for per-module status (live / testnet
 | **Build multi-agent systems** | [AIP Quick Start](/get-started/aip-quickstart/) |
 | **Enable agent payments** | [Unibase Pay Quick Start](/get-started/pay-quickstart/) |
 | **Run storage/validator nodes** | [Unibase DA Quick Start](/get-started/da-quickstart/) |
-| **Capture & reuse my AI chats** | [Membase Extension](/unibase-memory/getting-started/) |
+| **Capture & reuse my AI chats** | [Membase Extension](https://docs.membase.com/use/bring-your-material-in/browser-extension/) |
 | **Stake UB & vote on parameters** | [Governance](/governance/) |
 
 ---
