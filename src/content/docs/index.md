@@ -48,4 +48,4 @@ See [Status & Maturity](/overview/status/) for per-module status (live / testnet
 | **Unibase DA** | Data availability — erasure-coded, ZK-verified, honest-one fraud proofs, EB+ capacity. |
 | **Membase Extension** | Chrome extension — capture, organize & reuse ChatGPT/Claude/Gemini chats. Encrypted, owned, verifiable. |
 
-> **Two things share the Membase name:** the **Membase SDK/protocol** is for developers building agents with memory & collaboration; the **Membase extension** is the consumer **Chrome extension** for capturing and reusing your own AI chats. Same stack, different surface. (The extension was formerly called Unibase Memory.)
+> **Two things share the Membase name, and they are not the same stack.** The **Membase** module above is this protocol's memory layer: wallet identity, signed writes, on-chain settlement. **Membase at [membase.com](https://membase.com)** is a separate hosted product — its own accounts, its own infrastructure, sign-in with email or Google, paid by card — and it is documented at [docs.membase.com](https://docs.membase.com). The Chrome extension listed above belongs to that product. (It was formerly called Unibase Memory.)
